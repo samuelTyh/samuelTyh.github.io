@@ -1,15 +1,15 @@
 
 # Site Settings
 
-title: Sujay Kundu  # Your Title 
-subtitle: Full Stack Web Developer 
-email: sujaykundu777@gmail.com  # Your Email
+title: Samuel Tseng  # Your Title 
+subtitle: Data Scientist / Machine Learning Engineer 
+email: samueltseng@icloud.com  # Your Email
 description: >-  
-  Sujay Kundu is Web Developer and Blogger
-baseurl: "/devlopr-starter" # the subpath of your site, e.g. /blog
-url: "https://sujaykundu.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: xplor4r
-github_username:  sujaykundu777
+  Welcome to my blog
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://samuelTyh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: samuelTyh
+github_username:  samuelTyh
 
 # Navigation 
 
@@ -28,23 +28,17 @@ urls:
 # Author Details
 
 author_logo: profile.jpg
-author: Sujay Kundu
-author_bio: Hi, My Name is Sujay Kundu. I love to Code and Design. devlopr-jekyll is a theme built for developers.  
-author_email: "sujaykundu777@gmail.com"
-author_location: India
-author_website_url: "https://sujaykundu.com"
+author: Samuel Tseng
+author_bio: Hi, My Name is Samuel Tseng. I love to code and write. Welcome to my portfolio and blog.
+author_email: "samueltseng@icloud.com"
+author_location: Berlin, Germany
+author_website_url: "https://samuelTyh.github.io"
 
 # social links
-twitter_username: xplor4r
-github_username:  sujaykundu777
-facebook_username: sujay.kundu2
-linkedin_username: sujaykundu
-behance_username: sujaykundu
-instagram_username: xplor4r
-medium_username: sujaykundu
-telegram_username: sujaykundu
-dribbble_username: sujaykundu777
-flickr_username: sujaykundu777
+twitter_username: samuelTyh
+github_username:  samuelTyh
+facebook_username: yht.samuel
+linkedin_username: samuel-tseng
 
 # Choose what to show ( true - display or false - don't display)
 show_author_work_experiences: true
@@ -52,25 +46,25 @@ show_author_education_details: true
 show_author_project_details: true
 
 author_work_experiences: 
-            - company_name: Google
-              company_logo: google.png
-              company_url: https://google.com
-              designation: Software Engineer
-              description: Worked on various Google Products
+            - company_name: digitty.io GmbH
+              company_logo: digittyio.png
+              company_url: https://digitty.io
+              designation: Data Scientist (Feb 2019 - PRESENT)
+              description: Worked on digitty.io AI platform and Intelligence solution for costomer and business strategy.
               visibility: true
-            - company_name: Microsoft
-              company_logo: microsoft.png
-              company_url: https://microsoft.com
-              designation: Azure Developer
-              description: Worked on various Azure Cloud Products
+            - company_name: self-employed
+              company_logo: selfemployed.jpg
+              company_url: 
+              designation: Data Consultant (Aug 2017 - PRESENT)
+              description: Worked on various projects in Berlin and Taipei.
               visibility: true
 
 author_education_details:
-              - college_logo: mit.png
-                college_name: MIT
-                college_url: https://mit.org
-                college_degree: CS Engineer
-                description: Bachelor of Technology
+              - college_logo: nuk.jpg
+                college_name: National University of Kaohsiung
+                college_url: https://www.nuk.edu.tw/?Lang=en
+                college_degree: Applied Mathematics
+                description: Bachelor of Science
                 visibility: true
 
 author_project_details:
@@ -89,7 +83,7 @@ author_project_details:
 disqus_shortname: sujay-kundu  
 
 # wakatime username
-wakatime_username: sujaykundu777
+wakatime_username: samuelTyh
 
 # syntax highlighter
 markdown: kramdown
