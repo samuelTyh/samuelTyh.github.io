@@ -43,7 +43,7 @@ linkedin_username: samuel-tseng
 # Choose what to show ( true - display or false - don't display)
 show_author_work_experiences: true
 show_author_education_details: true
-show_author_project_details: true
+show_author_project_details: false
 
 author_work_experiences: 
             - company_name: digitty.io GmbH
