@@ -4,7 +4,7 @@ title:  "Setting both Celery and Flask inside the docker-compose"
 author: Samuel Tseng
 date:   2020-02-04 22:44:12 +0100
 category: Tech
-summary: Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python.
+summary: How to run both Celery and Flask in docker container
 thumbnail: hello.jpg
 ---
 ## Setting both Celery and Flask inside the docker-compose
