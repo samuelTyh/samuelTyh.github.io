@@ -5,7 +5,7 @@ author: John Doe
 date: '2019-01-19 14:35:23 +0530'
 category: guides
 summary: Hello World 
-thumbnail: 1.png
+thumbnail: hello.jpg
 permalink: /blog/hello-world
 ---
 

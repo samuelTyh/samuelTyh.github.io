@@ -4,7 +4,7 @@
   <title>Ein Berliner Tagebuch - Tech, Travel, Trivial Things</title>
   <meta http-equip="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Welcome to my blog">
+  <meta name="description" content="Personal blog with brief CV, working notes and life sharing.">
   <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
   <link rel="stylesheet" href="http://localhost:4000/assets/css/custom-style.css" />
   <link rel="icon" href="http://localhost:4000/assets/img/favicon.ico" type="image/gif" sizes="16x16">
@@ -143,48 +143,187 @@
             <li class="breadcrumb-item">
                 <a href="/blog/categories">Categories</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Welcome To Jekyll</li>
+            <li class="breadcrumb-item active" aria-current="page">Setting both Celery and Flask inside the docker-compose</li>
         </ol>
     </nav>
 <div class="row">
 
         <div class="col-lg-8"><article class="card" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="card-header">
-        <!-- <h1 class="post-title" itemprop="name headline">Welcome To Jekyll</h1> -->
-        <h4 class="post-meta">Hello World</h4>
+        <!-- <h1 class="post-title" itemprop="name headline">Setting both Celery and Flask inside the docker-compose</h1> -->
+        <h4 class="post-meta">Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python.</h4>
         <p class="post-summary">Posted by : 
             <img src="/assets/img/profile.jpg" class="author-profile-img">
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">John Doe</span>
+                <span itemprop="name">Samuel Tseng</span>
             </span> at
-            <time datetime="2019-01-19 10:05:23 +0100" itemprop="datePublished">Jan 19, 2019</time>
+            <time datetime="2020-02-04 22:44:12 +0100" itemprop="datePublished">Feb 4, 2020</time>
         </p>
-        <span class="disqus-comment-count" data-disqus-identifier="/blog/hello-world"></span>     
+        <span class="disqus-comment-count" data-disqus-identifier="/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose/"></span>     
         <div class="post-categories">
             
             Category : 
-            <a href="/blog/categories/guides">guides</a>
+            <a href="/blog/categories/Tech">Tech</a>
              
         </div>
     </div>
 
     <div class="card-body" itemprop="articleBody">
-        <img class="card-img-top" src="/assets/img/posts/1.png" alt=""> 
+        <img class="card-img-top" src="/assets/img/posts/hello.jpg" alt=""> 
         <br/> <br/>
-        <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+        <h2 id="setting-both-celery-and-flask-inside-the-docker-compose">Setting both Celery and Flask inside the docker-compose</h2>
 
-<p>To add new posts, simply add a file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory that follows the convention <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python.
+I found Celery, the excellent tool to implement distributed task queue by Python, can easily deal with request using asynchronous designing.
+It seems like a perfect solution for my issue, however, there has still a new problem arised, what is I need to focus on processing the task ran by Flask and packed in docker and running by docker compose, it is difficult to find all of these resources at the same time on the Internet.
+So let’s started!</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<hr />
+<h4 id="my-article-is-referenced-from-the-following-resources">My article is referenced from the following resources:</h4>
+<ol>
+  <li><a href="https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/">Asynchronous Tasks with Flask and Redis Queue</a></li>
+  <li><a href="https://github.com/ViktorSalimonov/pylette?source=post_page---------------------------">The web-service for extracting dominant color from images.</a></li>
+  <li><a href="https://blog.miguelgrinberg.com/post/using-celery-with-flask">Using Celery with Flask</a></li>
+  <li><a href="http://andyjin.applinzi.com/?p=1230">Flask + Celery tutorial (Mandarin resource)</a></li>
+  <li><a href="https://forster.site/2016-11-17-celery.html">Task schduling with Celery (Mandarin resource)</a></li>
+</ol>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<hr />
+<h4 id="app-structure-displaying">App Structure Displaying</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flask_Celery_example
+|
+├── api
+|   ├── __init__.py
+|   ├── app.py               
+|   ├── celery_app.py
+|   ├── config.py
+|   ├── Dockerfile
+|   └── requirements.txt
+|
+├── docker-compose.yml
+└── README.md
+</code></pre></div></div>
+<h4 id="set-up-your-redis-and-celery-worker-in-docker-compose-the-breaking-point-is-to-set-up-the-celery-workers-name-well">Set up your Redis and Celery worker in docker-compose, the breaking point is to set up the celery worker’s name well.</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "3"
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+services:
+  web:
+    container_name: web
+    build: ./api
+    ports:
+      - "5000:5000"
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./api:/app
 
+  redis:
+    container_name: redis
+    image: redis:5.0.5
+    hostname: redis
+
+  worker:
+    build:
+      context: ./api
+    hostname: worker
+    entrypoint: celery
+    command: -A celery_app.celery worker --loglevel=info
+    volumes:
+      - ./api:/app
+    links:
+      - redis
+    depends_on:
+      - redis
+
+</code></pre></div></div>
+
+<h4 id="what-the-dockerfile-in-this-example-looks-like">What the Dockerfile in this example looks like.</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM python:3.6.5
+
+WORKDIR /app
+
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD [ "python", "./app.py" ]
+</code></pre></div></div>
+
+<h4 id="initialize-celery-worker-and-create-asynchronous-or-scheduled-task-in-celery_apppy">Initialize Celery worker and create asynchronous or scheduled task in celery_app.py</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
+from celery import Celery
+
+
+# Initialize Celery
+celery = Celery(
+    'worker', 
+    broker=config.CeleryConfig.CELERY_BROKER_URL,
+    backend=config.CeleryConfig.CELERY_RESULT_BACKEND
+)
+
+
+@celery.task()
+def func1(arg):
+    ...
+    return ...
+
+</code></pre></div></div>
+
+<h4 id="run-task-by-flask-and-check-its-status-in-apppy">Run task by Flask and check its status in app.py</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
+from celery_app import func1
+from flask import Flask, request, jsonify, url_for, redirect
+
+
+# Your API definition
+app = Flask(__name__)
+app.config.from_object('config.FlaskConfig')
+
+@app.route('/', methods=['POST'])
+def longtask():
+    task = func1.delay(arg)
+    return redirect(url_for('taskstatus', task_id=task.id))
+    
+@app.route('/status/&lt;task_id&gt;')
+def taskstatus(task_id):
+    task = func1.AsyncResult(task_id)
+    if task.state == 'PENDING':
+        time.sleep(config.SERVER_SLEEP)
+        response = {
+            'queue_state': task.state,
+            'status': 'Process is ongoing...',
+            'status_update': url_for('taskstatus', task_id=task.id)
+        }
+    else:
+        response = {
+            'queue_state': task.state,
+            'result': task.wait()
+        }
+    return jsonify(response)
+
+
+if __name__ == '__main__':
+    app.run()
+
+</code></pre></div></div>
+
+<h4 id="after-finishing-the-all-setting-we-can-run-the-script-on-terminal-below-to-create-container-and-run-it">After finishing the all setting, we can run the script on terminal below to create container and run it.</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd Flask_Celery_example
+$ docker-compose build
+$ docker-compose run
+</code></pre></div></div>
+
+<h4 id="conclusion">Conclusion</h4>
+<p>The bottleneck in this case is that I could run the Flask, Redis, Celery separately in docker-compose at first, but if I want to run it with only one script then it failed. I had tried and error lots of times to finding the breaking point, the correct script to run Celery in docker-compose. Everything was clear after throughing this bottleneck.
+Thanks for reading my first article! Leave your message below my Facebook post if there’s still any further questions. See you then.</p>
  
     </div>
 
@@ -193,15 +332,15 @@
 </article>
 <script>
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/blog/hello-world"; /* Replace PAGE_URL with your page's canonical URL variable */
-        this.page.identifier = "/blog/hello-world"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+        this.page.url = "http://localhost:4000/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose/"; /* Replace PAGE_URL with your page's canonical URL variable */
+        this.page.identifier = "/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
 
 
     (function () { /* DON'T EDIT BELOW THIS LINE */
         var d = document,
             s = d.createElement('script');
-        s.src = 'https://sujay-kundu.disqus.com/embed.js';
+        s.src = 'https://samuelTyh.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -234,18 +373,11 @@
         <div class="card-header">Categories </div>
         <div class="card-body text-dark">
              
-            <div id="#guides"></div>
+            <div id="#Tech"></div>
             <li class="tag-head">
-                <a href="/blog/categories/guides">guides</a>
+                <a href="/blog/categories/Tech">Tech</a>
             </li>
-            <a name="guides"></a>
-
-             
-            <div id="#jekyll"></div>
-            <li class="tag-head">
-                <a href="/blog/categories/jekyll">jekyll</a>
-            </li>
-            <a name="jekyll"></a>
+            <a name="Tech"></a>
 
             </div>
     </div>

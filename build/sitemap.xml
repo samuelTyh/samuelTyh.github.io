@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/blog/hello-world</loc>
-<lastmod>2019-01-19T10:05:23+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/welcome-to-jekyll/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/second-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/third-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/fourth-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/fifth-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/sixth-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/2020/01/11/seventh-post/</loc>
-<lastmod>2020-01-11T20:30:12+01:00</lastmod>
+<loc>http://localhost:4000/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose/</loc>
+<lastmod>2020-02-04T22:44:12+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/blog/categories/</loc>
@@ -58,8 +30,5 @@
 </url>
 <url>
 <loc>http://localhost:4000/shop/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/blog/page/2/</loc>
 </url>
 </urlset>
