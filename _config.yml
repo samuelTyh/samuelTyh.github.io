@@ -1,11 +1,11 @@
 
 # Site Settings
 
-title: Samuel Tseng  # Your Title 
-subtitle: Data Scientist / Machine Learning Engineer 
+title: Ein Berliner Tagebuch  # Your Title 
+subtitle: Tech, Travel, Trivial Things 
 email: samueltseng@icloud.com  # Your Email
 description: >-  
-  Welcome to my blog
+  Personal blog with brief CV, working notes and life sharing.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://samuelTyh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: samuelTyh
@@ -29,7 +29,10 @@ urls:
 
 author_logo: profile.jpg
 author: Samuel Tseng
-author_bio: Hi, My Name is Samuel Tseng. I love to code and write. Welcome to my portfolio and blog.
+author_bio: Samuel Tseng. Data Science Engineer based in Berlin, Germany. 
+  I have 4+ years of experience in banking/leasing, retail and IT service industries, also come with 2.5 years in the data science profession. 
+  Fluent in RESTful API designing, data pipeline concatenating and product deploying. 
+  And, familiar with Data Analysis, Data Visualization, Machine Learning, and NLP related Python libraries.
 author_email: "samueltseng@icloud.com"
 author_location: Berlin, Germany
 author_website_url: "https://samuelTyh.github.io"
@@ -43,20 +46,22 @@ linkedin_username: samuel-tseng
 # Choose what to show ( true - display or false - don't display)
 show_author_work_experiences: true
 show_author_education_details: true
-show_author_project_details: false
+show_author_project_details: true
 
 author_work_experiences: 
             - company_name: digitty.io GmbH
               company_logo: digittyio.png
               company_url: https://digitty.io
               designation: Data Scientist (Feb 2019 - PRESENT)
-              description: Worked on digitty.io AI platform and Intelligence solution for costomer and business strategy.
+              description: Worked on digitty.io AI platform and Intelligence solution for costomer and business strategy. 
+                Mainly focus on implementing data science projects and product prototyping.
               visibility: true
             - company_name: self-employed
               company_logo: selfemployed.jpg
               company_url: 
               designation: Data Consultant (Aug 2017 - PRESENT)
-              description: Worked on various projects in Berlin and Taipei.
+              description: Worked on several projects for corporations in Berlin and Taipei. 
+                As a Data Science Mentor (volunteer position) at CodeDoor now.
               visibility: true
 
 author_education_details:
@@ -68,10 +73,10 @@ author_education_details:
                 visibility: true
 
 author_project_details:
-              - project_thumbnail: gamershub.png
-                project_title: Gamers Hub
-                project_description: A Platform built for Gamers and Game Devs
-                project_url: https://gamershub.in
+              - project_thumbnail: team-logo.png
+                project_title: Ist Alles in Ordnung?
+                project_description: A Google Dialogflow application integrated with Python/Flask and Twitter API
+                project_url: https://github.com/pymia/ist-alles-in-ordnung
                 visibility: true
               - project_thumbnail: programmingebooks.png
                 project_title: Programming Ebooks
