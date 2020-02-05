@@ -2,11 +2,11 @@
 # Site Settings
 
 title: Ein Berliner Tagebuch  # Your Title 
-subtitle: Tech, Travel, Trivial Things 
+subtitle: Tech, Traveling, Trivial Things 
 email: samueltseng@icloud.com  # Your Email
 description: >-  
   Personal blog with brief CV, working notes and life sharing.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl:  # the subpath of your site, e.g. /blog
 url: "https://samuelTyh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: samuelTyh
 github_username:  samuelTyh
@@ -40,7 +40,7 @@ author_website_url: "https://samuelTyh.github.io"
 # social links
 twitter_username: samuelTyh
 github_username:  samuelTyh
-facebook_username: yht.samuel
+facebook_username: SamInDeutschland
 linkedin_username: samuel-tseng
 
 # Choose what to show ( true - display or false - don't display)

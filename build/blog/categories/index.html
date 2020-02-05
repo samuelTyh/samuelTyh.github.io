@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=" en "><head>
   <meta charset="utf-8">
-  <title>Ein Berliner Tagebuch - Tech, Travel, Trivial Things</title>
+  <title>Ein Berliner Tagebuch - Tech, Traveling, Trivial Things</title>
   <meta http-equip="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Personal blog with brief CV, working notes and life sharing.">
@@ -28,7 +28,7 @@
     href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
-  <script>
+  <!-- <script>
     (function (d, h, m) {
       var js, fjs = d.getElementsByTagName(h)[0];
       if (d.getElementById(m)) { return; }
@@ -42,11 +42,16 @@
       js.src = "https://makerwidget.com/js/embed.js";
       fjs.parentNode.insertBefore(js, fjs)
     }(document, "script", "dhm"))
-  </script>
+  </script> -->
 
   
 
-</head><body>
+</head><script>
+    $(window).on('hashchange', function(e){
+        history.replaceState ("", document.title, e.originalEvent.oldURL);
+    });
+</script>
+<body>
     <div class="container-fluid"><header>
 
     <div class="col-lg-12">
@@ -59,7 +64,7 @@
           
             <div class="col-md-4" id="author_details">
                 <h1 class="profile-name"> Ein Berliner Tagebuch</h1>
-                <p class="profile-bio"> Tech, Travel, Trivial Things</p>
+                <p class="profile-bio"> Tech, Traveling, Trivial Things</p>
                 <p class="profile-links">
                     
                     <a class="social-link" href="http://twitter.com/samuelTyh">
@@ -67,7 +72,7 @@
                     </a>
                     
                     
-                    <a class="social-link" href="http://facebook.com/yht.samuel">
+                    <a class="social-link" href="http://facebook.com/SamInDeutschland">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     
@@ -105,7 +110,7 @@
                     </li>
                      
                      <li class="nav-item">
-                         <a class="nav-link" href="http://localhost:4000/search/"><i class="fa fa-search" aria-hidden="true"></i></a>
+                         <a class="nav-link" href="http://localhost:4000/search"><i class="fa fa-search" aria-hidden="true"></i></a>
                      </li>
                      <!-- <li class="nav-item">
                          <button class="header__checkout snipcart-checkout">
@@ -141,7 +146,7 @@
     <a name="tech"></a>
      
     <article class="center">
-      <h6><a href="/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose/">Setting both Celery and Flask inside the docker-compose</a></h6>
+      <h6><a href="/blog/setting-both-celery-and-flask-inside-the-docker-compose">Setting both Celery and Flask inside the docker-compose</a></h6>
     </article>
 
 

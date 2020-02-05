@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/tech/2020/02/04/Setting-both-Celery-and-Flask-inside-the-docker-compose/</loc>
+<loc>http://localhost:4000/blog/setting-both-celery-and-flask-inside-the-docker-compose</loc>
 <lastmod>2020-02-04T22:44:12+01:00</lastmod>
 </url>
 <url>
