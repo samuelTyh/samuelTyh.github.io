@@ -4,7 +4,7 @@ title:  "Setting both Celery and Flask inside the docker-compose"
 author: Samuel Tseng
 date:   2020-02-04 22:44:12 +0100
 category: tech
-summary: How to run both Celery and Flask in docker container
+summary: Docker, Celery, Flask, Python
 thumbnail: hello.jpg
 permalink: /blog/setting-both-celery-and-flask-inside-the-docker-compose
 ---
