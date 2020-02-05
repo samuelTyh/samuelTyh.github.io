@@ -29,7 +29,7 @@ urls:
 
 author_logo: profile.jpg
 author: Samuel Tseng
-author_bio: Samuel Tseng. Data Science Engineer based in Berlin, Germany. 
+author_bio: Samuel Tseng. Data/Tech enthusiast based in Berlin, Germany. 
   I have 4+ years of experience in banking/leasing, retail and IT service industries, also come with 2.5 years in the data science profession. 
   Fluent in RESTful API designing, data pipeline concatenating and product deploying. 
   And, familiar with Data Analysis, Data Visualization, Machine Learning, and NLP related Python libraries.
@@ -82,7 +82,7 @@ author_project_details:
                 project_title: Programming Ebooks
                 project_description: A Platform to easily find and read programming books
                 project_url: https://programmingebooks.com
-                visibility: true
+                visibility: false
                 
 #for comments using disqus
 disqus_shortname: samuelTyh
