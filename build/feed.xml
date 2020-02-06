@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-05T14:04:35+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ein Berliner Tagebuch</title><subtitle>Personal blog with brief CV, working notes and life sharing.</subtitle><author><name>Samuel Tseng</name></author><entry><title type="html">Connect PostgreSQL in docker container with Azure Data Studio</title><link href="http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio" rel="alternate" type="text/html" title="Connect PostgreSQL in docker container with Azure Data Studio" /><published>2020-02-05T13:39:30+01:00</published><updated>2020-02-05T13:39:30+01:00</updated><id>http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio</id><content type="html" xml:base="http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio">&lt;h2 id=&quot;connect-postgresql-in-docker-container-with-azure-data-studio&quot;&gt;Connect PostgreSQL in docker container with Azure Data Studio&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-06T12:04:05+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ein Berliner Tagebuch</title><subtitle>Personal blog with brief CV, working notes and life sharing.</subtitle><author><name>Samuel Tseng</name></author><entry><title type="html">Connect PostgreSQL in docker container with Azure Data Studio</title><link href="http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio" rel="alternate" type="text/html" title="Connect PostgreSQL in docker container with Azure Data Studio" /><published>2020-02-05T13:39:30+01:00</published><updated>2020-02-05T13:39:30+01:00</updated><id>http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio</id><content type="html" xml:base="http://localhost:4000/blog/connect-postgresql-in-docker-container-with-azure-data-studio">&lt;h2 id=&quot;connect-postgresql-in-docker-container-with-azure-data-studio&quot;&gt;Connect PostgreSQL in docker container with Azure Data Studio&lt;/h2&gt;
 
 &lt;p&gt;Azure Data Studio is a cool product that can easily connect MySQL (if you already installed in your system) and show what in your database look like. What if we use PostgresSQL instead of MySQL, how should we start?&lt;/p&gt;
 
@@ -23,24 +23,24 @@ ba01d334f4db        postgres              &quot;docker-entrypoint.s…&quot;   3
 &lt;h3 id=&quot;1-install-postgresql-plug-in&quot;&gt;1. Install PostgreSQL plug-in.&lt;/h3&gt;
 &lt;p&gt;Choose the extension’s icon and search Postgres then install it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/img/posts/WukfL9H.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/WukfL9H.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;2-click-new-connection-choose-postgresql-as-your-database&quot;&gt;2. Click new connection, choose PostgreSQL as your database.&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/img/posts/ACogtlC.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/ACogtlC.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;3-enter-the-required-information&quot;&gt;3. Enter the required information.&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/img/posts/QCwXWTX.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/QCwXWTX.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;4-remember-to-set-port-in-advanced-setting&quot;&gt;4. Remember to set port in advanced setting.&lt;/h3&gt;
 &lt;p&gt;Enter the ip and port as same as you assigned to docker container.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/img/posts/n6oFLe2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/n6oFLe2.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;5-connect-and-start-to-work-in-the-database&quot;&gt;5. Connect and start to work in the database.&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;../assets/img/posts/V0rhy7k.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/V0rhy7k.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;p&gt;So far, the most important part is that remember to assign port when you run the docker container and enter the correct connection details, then it can keep your life much easier.&lt;/p&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">Connect PostgreSQL in docker container with Azure Data Studio</summary></entry><entry><title type="html">Setting both Celery and Flask inside the docker-compose</title><link href="http://localhost:4000/blog/setting-both-celery-and-flask-inside-the-docker-compose" rel="alternate" type="text/html" title="Setting both Celery and Flask inside the docker-compose" /><published>2020-02-04T22:44:12+01:00</published><updated>2020-02-04T22:44:12+01:00</updated><id>http://localhost:4000/blog/Setting-both-Celery-and-Flask-inside-the-docker-compose</id><content type="html" xml:base="http://localhost:4000/blog/setting-both-celery-and-flask-inside-the-docker-compose">&lt;h2 id=&quot;setting-both-celery-and-flask-inside-the-docker-compose&quot;&gt;Setting both Celery and Flask inside the docker-compose&lt;/h2&gt;
