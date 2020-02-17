@@ -1,188 +1,4 @@
-<!DOCTYPE html>
-<html lang=" en "><head>
-  <meta charset="utf-8">
-  <title>Ein Berliner Tagebuch - Tech, Traveling, Trivial Things</title>
-  <meta http-equip="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal blog with brief CV, working notes and life sharing.">
-  <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
-  <link rel="stylesheet" href="http://localhost:4000/assets/css/custom-style.css" />
-  <link rel="icon" href="http://localhost:4000/assets/img/favicon.ico" type="image/gif" sizes="16x16">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <!-- Including Snipcart -->
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.css" />
-  <!-- Including InstantSearch.js library and styling -->
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
-  <!-- <script>
-    (function (d, h, m) {
-      var js, fjs = d.getElementsByTagName(h)[0];
-      if (d.getElementById(m)) { return; }
-      js = d.createElement(h); js.id = m;
-      js.onload = function () {
-        window.makerWidgetComInit({
-          position: "right",
-          widget: "ofeeof264otl2l5g-zspk40eq2gaomj2n-higi2qphmveubksi"
-        })
-      };
-      js.src = "https://makerwidget.com/js/embed.js";
-      fjs.parentNode.insertBefore(js, fjs)
-    }(document, "script", "dhm"))
-  </script> -->
-
-  
-
-</head><body>
-    <div class="container-fluid"><header>
-
-    <div class="col-lg-12">
-        <div class="row">
-            <div class="col-md-2 center">
-                <a href="/">
-                    <img src="/assets/img/profile.jpg" class="profile-img">
-                </a>
-            </div>
-          
-            <div class="col-md-4" id="author_details">
-                <h1 class="profile-name"> Ein Berliner Tagebuch</h1>
-                <p class="profile-bio"> Tech, Traveling, Trivial Things</p>
-                <p class="profile-links">
-                    
-                    <a class="social-link" href="http://twitter.com/samuelTyh">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    
-                    
-                    <a class="social-link" href="http://facebook.com/SamInDeutschland">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    
-                    
-                    
-                    <a class="social-link" href="http://github.com/samuelTyh">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    
-                    
-                    
-                    <a class="social-link" href="http://linkedin.com/in/samuel-tseng">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    
-                    
-                </p>
-
-            </div>
-            <div class="col-md-6 center">
-     
-                    <ul class="nav justify-content-end" id="navigation">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">About</a>
-                    </li>
-                     
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
-                    </li>
-                     
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact Me</a>
-                    </li>
-                     
-                     <li class="nav-item">
-                         <a class="nav-link" href="http://localhost:4000/search"><i class="fa fa-search" aria-hidden="true"></i></a>
-                     </li>
-                     <!-- <li class="nav-item">
-                         <button class="header__checkout snipcart-checkout">
-
-                                <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    d="M1.10512 0.368718C0.560256 0.368718 0.118164 0.812066 0.118164 1.35848C0.118164 1.9049 0.560256 2.34824 1.10512 2.34824H4.90887L8.30138 18.4009C8.43503 19.0053 8.83085 19.5079 9.32946 19.5041H25.7788C26.3005 19.5118 26.7799 19.0375 26.7799 18.5143C26.7799 17.9911 26.3006 17.5168 25.7788 17.5245H10.1315L9.71003 15.545H27.095C27.5371 15.5412 27.9547 15.2048 28.0511 14.7718L30.354 4.87412C30.4825 4.29933 29.9852 3.67172 29.3979 3.66786H7.21171L6.6771 1.15221C6.58329 0.71276 6.15921 0.368652 5.7107 0.368652L1.10512 0.368718ZM7.623 5.64746H12.7634L13.2569 8.61674H8.25005L7.623 5.64746ZM14.7785 5.64746H20.9881L20.4946 8.61674H15.2719L14.7785 5.64746ZM23.0031 5.64746H28.1537L27.4649 8.61674H22.5097L23.0031 5.64746ZM8.67181 10.5963H13.5862L14.0797 13.5656H9.29919L8.67181 10.5963ZM15.6009 10.5963H20.1656L19.6721 13.5656H16.0944L15.6009 10.5963ZM22.1807 10.5963H27.0023L26.3135 13.5656H21.6872L22.1807 10.5963ZM12.6197 20.164C10.8141 20.164 9.32979 21.6525 9.32979 23.4632C9.32979 25.2739 10.8141 26.7624 12.6197 26.7624C14.4252 26.7624 15.9095 25.2739 15.9095 23.4632C15.9095 21.6525 14.4252 20.164 12.6197 20.164ZM22.4892 20.164C20.6837 20.164 19.1994 21.6525 19.1994 23.4632C19.1994 25.2739 20.6837 26.7624 22.4892 26.7624C24.2948 26.7624 25.7791 25.2739 25.7791 23.4632C25.7791 21.6525 24.2948 20.164 22.4892 20.164ZM12.6197 22.1435C13.3586 22.1435 13.9356 22.7222 13.9356 23.4632C13.9356 24.2042 13.3586 24.7829 12.6197 24.7829C11.8807 24.7829 11.3037 24.2042 11.3037 23.4632C11.3037 22.7222 11.8807 22.1435 12.6197 22.1435ZM22.4892 22.1435C23.2282 22.1435 23.8052 22.7222 23.8052 23.4632C23.8052 24.2042 23.2282 24.7829 22.4892 24.7829C21.7503 24.7829 21.1733 24.2042 21.1733 23.4632C21.1733 22.7222 21.7503 22.1435 22.4892 22.1435Z"
-                                    fill="#9094FF" class="header__checkout-fill"></path>
-                                </svg>
-                                <span class="snipcart-items-count"></span>
-                                <!-- <span class="snipcart-total-price"></span> -->
-                              <!-- </button> -->
-                        <!-- </li> -->
-                    </ul>
-      
-            </div>
-        </div>
-    </div>
-
-</header><div class="col-lg-12">
-          
-            <!-- Blog Post Breadcrumbs --><nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/blog">Blog</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="/blog/categories">Categories</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Setting both Celery and Flask inside the docker-compose</li>
-        </ol>
-    </nav>
-<div class="row">
-
-        <div class="col-lg-8"><article class="card" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="card-header">
-        <!-- <h1 class="post-title" itemprop="name headline">Setting both Celery and Flask inside the docker-compose</h1> -->
-        <h4 class="post-meta">Docker, Celery, Flask, Python</h4>
-        <p class="post-summary">Posted by : 
-            <img src="/assets/img/profile.jpg" class="author-profile-img">
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">Samuel Tseng</span>
-            </span> at
-            <time datetime="2020-02-04 22:44:12 +0100" itemprop="datePublished">Feb 4, 2020</time>
-        </p>
-        <span class="disqus-comment-count" data-disqus-identifier="/blog/setting-both-celery-and-flask-inside-the-docker-compose"></span>     
-        <div class="post-categories">
-            
-            Category : 
-            <a href="/blog/categories/tech">tech</a>
-             
-        </div>
-    </div>
-
-    <div class="card-body" itemprop="articleBody">
-        <img class="card-img-top" src="/assets/img/posts/hello.jpg" alt=""> 
-        <br/> <br/>
-        <h2 id="setting-both-celery-and-flask-inside-the-docker-compose">Setting both Celery and Flask inside the docker-compose</h2>
-
-<p>Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python.
-I found Celery, the excellent tool to implement distributed task queue by Python, can easily deal with request using asynchronous designing.
-It seems like a perfect solution for my issue, however, there has still a new problem arised, what is I need to focus on processing the task ran by Flask and packed in docker and running by docker compose, it is difficult to find all of these resources at the same time on the Internet.
-So let’s started!</p>
-
-<hr />
-<h4 id="my-article-is-referenced-from-the-following-resources">My article is referenced from the following resources:</h4>
-<ol>
-  <li><a href="https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/">Asynchronous Tasks with Flask and Redis Queue</a></li>
-  <li><a href="https://github.com/ViktorSalimonov/pylette?source=post_page---------------------------">The web-service for extracting dominant color from images.</a></li>
-  <li><a href="https://blog.miguelgrinberg.com/post/using-celery-with-flask">Using Celery with Flask</a></li>
-  <li><a href="http://andyjin.applinzi.com/?p=1230">Flask + Celery tutorial (Mandarin resource)</a></li>
-  <li><a href="https://forster.site/2016-11-17-celery.html">Task schduling with Celery (Mandarin resource)</a></li>
-</ol>
-
-<hr />
-<h4 id="app-structure-displaying">App Structure Displaying</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flask_Celery_example
+<!DOCTYPE html><html lang=" en "><head><meta charset="utf-8"><title>Ein Berliner Tagebuch - Tech, Traveling, Trivial Things</title><meta http-equip="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Personal blog with brief CV, working notes and life sharing."><link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" /><link rel="stylesheet" href="http://localhost:4000/assets/css/custom-style.css" /><link rel="icon" href="http://localhost:4000/assets/img/favicon.ico" type="image/gif" sizes="16x16"> <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> <script async defer src="https://buttons.github.io/buttons.js"></script><link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.css" /> <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script><link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css"><body><div class="container-fluid"><header><div class="col-lg-12"><div class="row"><div class="col-md-2 center"> <a href="/"> <img src="/assets/img/profile.jpg" class="profile-img"> </a></div><div class="col-md-4" id="author_details"><h1 class="profile-name"> Ein Berliner Tagebuch</h1><p class="profile-bio"> Tech, Traveling, Trivial Things</p><p class="profile-links"> <a class="social-link" href="http://twitter.com/samuelTyh"> <i class="fab fa-twitter"></i> </a> <a class="social-link" href="http://facebook.com/SamInDeutschland"> <i class="fab fa-facebook-f"></i> </a> <a class="social-link" href="http://github.com/samuelTyh"> <i class="fab fa-github"></i> </a> <a class="social-link" href="http://linkedin.com/in/samuel-tseng"> <i class="fab fa-linkedin-in"></i> </a></p></div><div class="col-md-6 center"><ul class="nav justify-content-end" id="navigation"><li class="nav-item"> <a class="nav-link" href="/">About</a><li class="nav-item"> <a class="nav-link" href="/blog">Blog</a><li class="nav-item"> <a class="nav-link" href="/contact">Contact Me</a><li class="nav-item"> <a class="nav-link" href="http://localhost:4000/search"><i class="fa fa-search" aria-hidden="true"></i></a></ul></div></div></div></header><div class="col-lg-12"><nav aria-label="breadcrumb" role="navigation"><ol class="breadcrumb"><li class="breadcrumb-item"> <a href="/blog">Blog</a><li class="breadcrumb-item"> <a href="/blog/categories">Categories</a><li class="breadcrumb-item active" aria-current="page">Setting both Celery and Flask inside the docker-compose</ol></nav><div class="row"><div class="col-lg-8"><article class="card" itemscope itemtype="http://schema.org/BlogPosting"><div class="card-header"><h4 class="post-meta">Docker, Celery, Flask, Python</h4><p class="post-summary">Posted by : <img src="/assets/img/profile.jpg" class="author-profile-img"> <span itemprop="author" itemscope itemtype="http://schema.org/Person"> <span itemprop="name">Samuel Tseng</span> </span> at <time datetime="2020-02-04 22:44:12 +0100" itemprop="datePublished">Feb 4, 2020</time></p><span class="disqus-comment-count" data-disqus-identifier="/blog/setting-both-celery-and-flask-inside-the-docker-compose"></span><div class="post-categories"> Category : <a href="/blog/categories/tech">tech</a></div></div><div class="card-body" itemprop="articleBody"> <img class="card-img-top" src="/assets/img/posts/hello.jpg" alt=""> <br/> <br/><h2 id="setting-both-celery-and-flask-inside-the-docker-compose">Setting both Celery and Flask inside the docker-compose</h2><p>Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python. I found Celery, the excellent tool to implement distributed task queue by Python, can easily deal with request using asynchronous designing. It seems like a perfect solution for my issue, however, there has still a new problem arised, what is I need to focus on processing the task ran by Flask and packed in docker and running by docker compose, it is difficult to find all of these resources at the same time on the Internet. So let’s started!</p><hr /><h4 id="my-article-is-referenced-from-the-following-resources">My article is referenced from the following resources:</h4><ol><li><a href="https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/">Asynchronous Tasks with Flask and Redis Queue</a><li><a href="https://github.com/ViktorSalimonov/pylette?source=post_page---------------------------">The web-service for extracting dominant color from images.</a><li><a href="https://blog.miguelgrinberg.com/post/using-celery-with-flask">Using Celery with Flask</a><li><a href="http://andyjin.applinzi.com/?p=1230">Flask + Celery tutorial (Mandarin resource)</a><li><a href="https://forster.site/2016-11-17-celery.html">Task schduling with Celery (Mandarin resource)</a></ol><hr /><h4 id="app-structure-displaying">App Structure Displaying</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flask_Celery_example
 |
 ├── api
 |   ├── __init__.py
@@ -194,9 +10,7 @@ So let’s started!</p>
 |
 ├── docker-compose.yml
 └── README.md
-</code></pre></div></div>
-<h4 id="set-up-your-redis-and-celery-worker-in-docker-compose-the-breaking-point-is-to-set-up-the-celery-workers-name-well">Set up your Redis and Celery worker in docker-compose, the breaking point is to set up the celery worker’s name well.</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "3"
+</code></pre></div></div><h4 id="set-up-your-redis-and-celery-worker-in-docker-compose-the-breaking-point-is-to-set-up-the-celery-workers-name-well">Set up your Redis and Celery worker in docker-compose, the breaking point is to set up the celery worker’s name well.</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "3"
 
 services:
   web:
@@ -231,10 +45,7 @@ services:
     depends_on:
       - redis
 
-</code></pre></div></div>
-
-<h4 id="what-the-dockerfile-in-this-example-looks-like">What the Dockerfile in this example looks like.</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM python:3.6.5
+</code></pre></div></div><h4 id="what-the-dockerfile-in-this-example-looks-like">What the Dockerfile in this example looks like.</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM python:3.6.5
 
 WORKDIR /app
 
@@ -247,10 +58,7 @@ COPY . .
 EXPOSE 5000
 
 CMD [ "python", "./app.py" ]
-</code></pre></div></div>
-
-<h4 id="initialize-celery-worker-and-create-asynchronous-or-scheduled-task-in-celery_apppy">Initialize Celery worker and create asynchronous or scheduled task in celery_app.py</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
+</code></pre></div></div><h4 id="initialize-celery-worker-and-create-asynchronous-or-scheduled-task-in-celery_apppy">Initialize Celery worker and create asynchronous or scheduled task in celery_app.py</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
 from celery import Celery
 
 
@@ -267,10 +75,7 @@ def func1(arg):
     ...
     return ...
 
-</code></pre></div></div>
-
-<h4 id="run-task-by-flask-and-check-its-status-in-apppy">Run task by Flask and check its status in app.py</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
+</code></pre></div></div><h4 id="run-task-by-flask-and-check-its-status-in-apppy">Run task by Flask and check its status in app.py</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import config
 from celery_app import func1
 from flask import Flask, request, jsonify, url_for, redirect
 
@@ -305,93 +110,7 @@ def taskstatus(task_id):
 if __name__ == '__main__':
     app.run()
 
-</code></pre></div></div>
-
-<h4 id="after-finishing-the-all-setting-we-can-run-the-script-on-terminal-below-to-create-container-and-run-it">After finishing the all setting, we can run the script on terminal below to create container and run it.</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd Flask_Celery_example
+</code></pre></div></div><h4 id="after-finishing-the-all-setting-we-can-run-the-script-on-terminal-below-to-create-container-and-run-it">After finishing the all setting, we can run the script on terminal below to create container and run it.</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd Flask_Celery_example
 $ docker-compose build
 $ docker-compose run
-</code></pre></div></div>
-
-<h4 id="conclusion">Conclusion</h4>
-<p>The bottleneck in this case is that I could run the Flask, Redis, Celery separately in docker-compose at first, but if I want to run it with only one script then it failed. I had tried and error lots of times to finding the breaking point, the correct script to run Celery in docker-compose. Everything was clear after throughing this bottleneck.
-Thanks for reading my first article! Leave your message below my Facebook post if there’s still any further questions. See you then.</p>
- 
-    </div>
-
-    <div id="disqus_thread"></div>
-
-</article>
-<script>
-    var disqus_config = function () {
-        this.page.url = "http://localhost:4000/blog/setting-both-celery-and-flask-inside-the-docker-compose"; /* Replace PAGE_URL with your page's canonical URL variable */
-        this.page.identifier = "/blog/Setting-both-Celery-and-Flask-inside-the-docker-compose"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
-    };
-
-
-    (function () { /* DON'T EDIT BELOW THIS LINE */
-        var d = document,
-            s = d.createElement('script');
-        s.src = 'https://samuelTyh.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the
-    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript></div>
-<div class="col-lg-4">
-    <div class="card">
-        <div class="card-header"> About </div>
-        <div class="card-body text-dark">
-            <!-- Your Bio -->
-            <p> Samuel Tseng. Data/Tech enthusiast based in Berlin, Germany. I have 4+ years of experience in banking/leasing, retail and IT service industries, also come with 2.5 years in the data science profession. Fluent in RESTful API designing, data pipeline concatenating and product deploying. And, familiar with Data Analysis, Data Visualization, Machine Learning, and NLP related Python libraries.</p><!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/samuelTyh/samuelTyh.github.io" data-size="large" data-show-count="true" aria-label="Star samuelTyh/samuelTyh.github.io on GitHub">Star</a></div>
-    </div>
-    <div class="card">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- sidebar-horizontal-1 -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-7259836434848202"
-             data-ad-slot="7549410045"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-    <div class="card">
-        <div class="card-header">Categories </div>
-        <div class="card-body text-dark">
-             
-            <div id="#tech"></div>
-            <li class="tag-head">
-                <a href="/blog/categories/tech">tech</a>
-            </li>
-            <a name="tech"></a>
-
-            </div>
-    </div>
-</div></div> <!-- End of row-->
-    
-
-    
-
-        </div>
-<footer>
-
-    <p> Powered by<a href="https://devlopr.netlify.com/readme"> devlopr jekyll</a>. Hosted at <a href="https://pages.github.com">Github</a>. Subscribe via
-        <a href=" /feed.xml ">RSS</a>
-    </p>
-
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</div>
-</body>
-
-<div hidden id="snipcart" data-api-key="Y2I1NTAyNWYtMTNkMy00ODg0LWE4NDItNTZhYzUxNzJkZTI5NjM3MDI4NTUzNzYyMjQ4NzU0"></div>
-<script src="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.js" defer></script>
-</html>
+</code></pre></div></div><h4 id="conclusion">Conclusion</h4><p>The bottleneck in this case is that I could run the Flask, Redis, Celery separately in docker-compose at first, but if I want to run it with only one script then it failed. I had tried and error lots of times to finding the breaking point, the correct script to run Celery in docker-compose. Everything was clear after throughing this bottleneck. Thanks for reading my first article! Leave your message below my Facebook post if there’s still any further questions. See you then.</p></div><div id="disqus_thread"></div></article><script> var disqus_config = function () { this.page.url = "http://localhost:4000/blog/setting-both-celery-and-flask-inside-the-docker-compose"; /* Replace PAGE_URL with your page's canonical URL variable */ this.page.identifier = "/blog/Setting-both-Celery-and-Flask-inside-the-docker-compose"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */ }; (function () { /* DON'T EDIT BELOW THIS LINE */ var d = document, s = d.createElement('script'); s.src = 'https://samuelTyh.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a> </noscript></div><div class="col-lg-4"><div class="card"><div class="card-header"> About</div><div class="card-body text-dark"><p> Samuel Tseng. Data/Tech enthusiast based in Berlin, Germany. I have 4+ years of experience in banking/leasing, retail and IT service industries, also come with 2.5 years in the data science profession. Fluent in RESTful API designing, data pipeline concatenating and product deploying. And, familiar with Data Analysis, Data Visualization, Machine Learning, and NLP related Python libraries.</p><a class="github-button" href="https://github.com/samuelTyh/samuelTyh.github.io" data-size="large" data-show-count="true" aria-label="Star samuelTyh/samuelTyh.github.io on GitHub">Star</a></div></div><div class="card"> <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7259836434848202" data-ad-slot="7549410045" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="card"><div class="card-header">Categories</div><div class="card-body text-dark"><div id="#tech"></div><li class="tag-head"> <a href="/blog/categories/tech">tech</a> <a name="tech"></a></div></div></div></div>
