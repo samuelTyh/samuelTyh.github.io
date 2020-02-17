@@ -10,6 +10,7 @@ baseurl:  # the subpath of your site, e.g. /blog
 url: "https://samuelTyh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: samuelTyh
 github_username:  samuelTyh
+google_analytics: UA-158696220-1
 
 # Navigation 
 
