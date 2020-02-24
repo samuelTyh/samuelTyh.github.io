@@ -60,9 +60,9 @@ author_work_experiences:
             - company_name: self-employed
               company_logo: selfemployed.jpg
               company_url: 
-              designation: Data Consultant (Aug 2017 - PRESENT)
+              designation: Data Consultant (Aug 2017 - Jan 2019)
               description: Worked on several projects for corporations in Berlin and Taipei. 
-                As a Data Science Mentor (volunteer position) at CodeDoor now.
+                The latest project was to serve as a Data Science Mentor (volunteer position) at CodeDoor.org.
               visibility: true
 
 author_education_details:
@@ -79,11 +79,11 @@ author_project_details:
                 project_description: A Google Dialogflow application integrated with Python/Flask and Twitter API
                 project_url: https://github.com/pymia/ist-alles-in-ordnung
                 visibility: true
-              - project_thumbnail: programmingebooks.png
-                project_title: Programming Ebooks
-                project_description: A Platform to easily find and read programming books
-                project_url: https://programmingebooks.com
-                visibility: false
+              - project_thumbnail: cvparser.jpeg
+                project_title: CV parser
+                project_description: Implemented customized Name Entity Recognition (NER) by spaCy. Recreated 11 classes of name entities, trained the model, wrapped into API and deployed to the cloud.
+                project_url: https://github.com/samuelTyh/CVparser
+                visibility: true
                 
 #for comments using disqus
 disqus_shortname: samuelTyh
