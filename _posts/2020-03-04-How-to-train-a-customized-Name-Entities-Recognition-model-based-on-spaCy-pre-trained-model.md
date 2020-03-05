@@ -95,18 +95,26 @@ Use stochastic gradient descent as optimizer with mini-batch configuration, get 
         print(">>>>>>>>>>  Finished training  <<<<<<<<<<")
 ```
 
-After training, dump the model to your on-premises disk. Put the last 3 lines inside the `with nlp.disable_pipes(*other_pipes):` will save the only `ner` pipeline. Otherwise, the entire model will be saved, that's exactly what I need.
+After training, dump the model as a binary data to your on-premises disk. Put the last 10 lines inside the `with nlp.disable_pipes(*other_pipes):` will save the only `ner` pipeline. Otherwise, the entire model will be saved, that's exactly what I need.
 ```
         if output_dir:
             path = output_dir + f"en_model_ner_{round(losses_best, 2)}"
         else:
             path = os.getcwd() + f"/lib/inactive_model/en_model_ner_{round(losses_best, 2)}"
+            os.mkdir(path)
         if testing_data:
             self.validate_spacy(model=nlp, data=testing_data)
 
     with nlp.use_params(optimizer.averages):
         nlp.meta["name"] = new_model_name
-        nlp.to_disk(path)
+        bytes_data = nlp.to_bytes()
+        lang = nlp.meta["lang"]
+        pipeline = nlp.meta["pipeline"]
+
+    model_data = dict(bytes_data=bytes_data, lang=lang, pipeline=pipeline)
+
+    with open(path + '/model.pkl', 'wb') as f:
+        pickle.dump(model_data, f)
 ```
 
 You can load the model by the simple code `spacy.load(model_path)` to load your model by your specified path on your disk.
