@@ -117,4 +117,15 @@ After training, dump the model as a binary data to your on-premises disk. Put th
         pickle.dump(model_data, f)
 ```
 
-You can load the model by the simple code `spacy.load(model_path)` to load your model by your specified path on your disk.
+You can load the model by the following function to load your model by your specified path on your disk.
+```
+def load_model(model_path):
+    with open(model_path + '/model.pkl', 'rb') as f:
+        model = pickle.load(f)
+    nlp = spacy.blank(model['lang'])
+    for pipe_name in model['pipeline']:
+        pipe = nlp.create_pipe(pipe_name)
+        nlp.add_pipe(pipe)
+    nlp.from_bytes(model['bytes_data'])
+    return nlp
+```
