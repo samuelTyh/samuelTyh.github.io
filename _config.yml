@@ -31,9 +31,9 @@ urls:
 author_logo: profile.jpg
 author: Samuel Tseng
 author_bio: Samuel Tseng. Data/Tech enthusiast based in Berlin, Germany. 
-  I have 4+ years of experience in banking/leasing, retail and IT service industries, also come with 2.5 years in the data science profession. 
-  Fluent in RESTful API designing, data pipeline concatenating and product deploying. 
-  And, familiar with Data Analysis, Data Visualization, Machine Learning, and NLP related Python libraries.
+  I have more than 7 years of experience in different realms, including education, banking/leasing, consultant, retail, IT service industries.
+  I also come with 3 years in the data science profession.
+  Mainly focus on implementing data science projects and product prototyping.
 author_email: "samueltseng@icloud.com"
 author_location: Berlin, Germany
 author_website_url: "https://samuelTyh.github.io"
@@ -69,8 +69,8 @@ author_education_details:
               - college_logo: nuk.jpg
                 college_name: National University of Kaohsiung
                 college_url: https://www.nuk.edu.tw/?Lang=en
-                college_degree: Applied Mathematics
-                description: Bachelor of Science
+                college_degree: B.Sc, Applied Mathematics
+                description: Major in Applied Mathematics, solid trained in mathematical, statistical thinking, hands-on experience of Matlab and R language.
                 visibility: true
 
 author_project_details:
