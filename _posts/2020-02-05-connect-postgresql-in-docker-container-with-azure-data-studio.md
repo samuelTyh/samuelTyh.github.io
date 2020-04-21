@@ -36,24 +36,24 @@ After running the container, we could start the next step, set up the connection
 ### 1. Install PostgreSQL plug-in.
 Choose the extension's icon and search Postgres then install it.
 
-![](../assets/img/posts/WukfL9H.png){:class="img-responsive"}
+[ ![](../assets/img/posts/WukfL9H.png){:class="img-responsive"} ](../assets/img/posts/WukfL9H.png)
 
 ### 2. Click new connection, choose PostgreSQL as your database.
 
-![](../assets/img/posts/ACogtlC.png){:class="img-responsive"}
+[ ![](../assets/img/posts/ACogtlC.png){:class="img-responsive"} ](../assets/img/posts/ACogtlC.png)
 
 ### 3. Enter the required information.
 
-![](../assets/img/posts/QCwXWTX.png){:class="img-responsive"}
+[ ![](../assets/img/posts/QCwXWTX.png){:class="img-responsive"} ](../assets/img/posts/QCwXWTX.png)
 
 ### 4. Remember to set port in advanced setting.
 Enter the ip and port as same as you assigned to docker container.
 
-![](../assets/img/posts/n6oFLe2.png){:class="img-responsive"}
+[ ![](../assets/img/posts/n6oFLe2.png){:class="img-responsive"} ](../assets/img/posts/n6oFLe2.png)
 
 ### 5. Connect and start to work in the database.
 
-![](../assets/img/posts/V0rhy7k.png){:class="img-responsive"}
+[ ![](../assets/img/posts/V0rhy7k.png){:class="img-responsive"} ](../assets/img/posts/V0rhy7k.png)
 
 ---
 So far, the most important part is that remember to assign port when you run the docker container and enter the correct connection details, then it can keep your life much easier.
