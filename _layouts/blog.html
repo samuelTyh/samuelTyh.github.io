@@ -35,29 +35,29 @@ layout: default
         {% if paginator.total_pages > 1 %}
           <ul class="pagination pagination-sm">
             {% if paginator.previous_page %}
-              <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}", style="font-size: 20px">&laquo;</a></li>
+              <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}", style="font-size: 20px">&emsp;&emsp;&emsp;&laquo;</a></li>
             {% else %}
-              <li class="disabled"><span aria-hidden="true">&laquo;</span></li>
+              <li class="disabled"><span aria-hidden="true", style="font-size: 20px;">&emsp;&emsp;&emsp;&laquo;</span></li>
             {% endif %}
       
-            <li><a href="/blog", style="font-size: 20px;">&nbsp;&nbsp;First&nbsp;&nbsp;</a></li>
+            <li><a href="/blog", style="font-size: 20px;">&emsp;First</a></li>
       
             {% for page in (1..paginator.total_pages) %}
               {% if page == paginator.page %}
-                <li class="active"><a, style="font-size: 20px;">{{ page }}<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a, style="font-size: 20px;">&emsp;{{ page }}<span class="sr-only">(current)</span></a></li>
               {% elsif page == 1 %}
-                <li><a href="/blog", style="font-size: 20px;">{{ page }}</a></li>
+                <li><a href="/blog", style="font-size: 20px;">&emsp;{{ page }}</a></li>
               {% else %}
-                <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}", style="font-size: 20px;">&nbsp;&nbsp;{{ page }}</a></li>
+                <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}", style="font-size: 20px;">&emsp;{{ page }}</a></li>
               {% endif %}
             {% endfor %}
       
-            <li><a href="/blog/page/{{ paginator.total_pages }}/", style="font-size: 20px;">&nbsp;&nbsp;Last&nbsp;&nbsp;</a></li>
+            <li><a href="/blog/page/{{ paginator.total_pages }}/", style="font-size: 20px;">&emsp;Last</a></li>
       
             {% if paginator.next_page %}
-              <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}", style="font-size: 20px;">&raquo;</a></li>
+              <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}", style="font-size: 20px;">&emsp;&raquo;</a></li>
             {% else %}
-              <li class="disabled"><span>&raquo;</span></li>
+              <li class="disabled"><span, style="font-size: 20px;">&emsp;&raquo;</span></li>
             {% endif %}
           </ul>
         {% endif %}
