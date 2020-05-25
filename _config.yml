@@ -1,8 +1,8 @@
 
 # Site Settings
 
-title: Ein Berliner Tagebuch  # Your Title 
-subtitle: Tech, Traveling, Trivial Things 
+title: Show me What you Got  # Your Title 
+subtitle: Tech, Data, Game-Nerd
 email: samueltseng@icloud.com  # Your Email
 description: >-  
   Personal blog with brief CV, working notes and life sharing.
@@ -53,16 +53,16 @@ author_work_experiences:
             - company_name: digitty.io GmbH
               company_logo: digittyio.png
               company_url: https://digitty.io
-              designation: Data Scientist (Feb 2019 - PRESENT)
+              designation: Data Scientist (Feb 2019 - Apr 2020)
               description: Worked on digitty.io AI platform and Intelligence solution for costomer and business strategy. 
                 Mainly focus on implementing data science projects and product prototyping.
               visibility: true
-            - company_name: self-employed
+            - company_name: Samuel.Tseng
               company_logo: selfemployed.jpg
               company_url: 
-              designation: Data Consultant (Aug 2017 - Jan 2019)
+              designation: Freelance Data Science Engineer (Aug 2017 - PRESENT)
               description: Worked on several projects for corporations in Berlin and Taipei. 
-                The latest project was to serve as a Data Science Mentor (volunteer position) at CodeDoor.org.
+                The latest project was to serve as a Data Science contributor/consultant at Covid-data.info.
               visibility: true
 
 author_education_details:
@@ -82,7 +82,7 @@ author_project_details:
               - project_thumbnail: cvparser.jpeg
                 project_title: CV parser
                 project_description: Implemented customized Name Entity Recognition (NER) by spaCy. Recreated 11 classes of name entities, trained the model, wrapped into API and deployed to the cloud.
-                project_url: https://github.com/samuelTyh/CVparser
+                project_url: https://github.com/samuelTyh/cv-parser-via-customized-ner
                 visibility: true
                 
 #for comments using disqus
