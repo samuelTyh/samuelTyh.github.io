@@ -3,7 +3,7 @@
 
 title: Show me What you Got  # Your Title 
 subtitle: Tech, Data, Game-Nerd
-email: samueltseng@icloud.com  # Your Email
+email: samuel.tseng.de@gmail.com  # Your Email
 description: >-  
   Personal blog with brief CV, working notes and life sharing.
 baseurl:  # the subpath of your site, e.g. /blog
@@ -30,10 +30,10 @@ urls:
 
 author_logo: profile.jpg
 author: Samuel Tseng
-author_bio: Samuel Tseng. Data/Tech enthusiast based in Berlin, Germany. 
-  I have more than 7 years of experience in different realms, including education, banking/leasing, consultant, retail, IT service industries.
-  I also come with 3 years in the data science profession.
-  Mainly focus on implementing data science projects and product prototyping.
+author_bio: A  highly motivated Data Science Engineer with cross-domain background and extensive experience in the Finance industry.
+  Expertise in Machine Learning, Data Warehousing, Data Migration.
+  Experienced in both on-prem and cloud solutions.
+  Awarded as Google Cloud Certified Professional Data Engineer.
 author_email: "samueltseng@icloud.com"
 author_location: Berlin, Germany
 author_website_url: "https://samuelTyh.github.io"
@@ -41,7 +41,7 @@ author_website_url: "https://samuelTyh.github.io"
 # social links
 twitter_username: samuelTyh
 github_username:  samuelTyh
-facebook_username: SamInDeutschland
+# facebook_username: SamInDeutschland
 linkedin_username: samuel-tseng
 
 # Choose what to show ( true - display or false - don't display)
@@ -50,17 +50,28 @@ show_author_education_details: true
 show_author_project_details: true
 
 author_work_experiences: 
+            - company_name: Google Cloud
+              company_logo: gcpde.png
+              company_url: https://www.credential.net/0a58fb8b-3008-44e0-8983-cc14761fc15b
+              designation: Google Cloud Certified Professional Data Engineer
+                (Jul 2020 - PRESENT)
+              description: A Professional Data Engineer enables data-driven decision making by collecting, transforming, and publishing data.
+                A data engineer should be able to design, build, operationalize, secure, and monitor data processing systems with a particular emphasis on security and compliance; scalability and efficiency; reliability and fidelity; and flexibility and portability.
+                A data engineer should also be able to leverage, deploy, and continuously train pre-existing machine learning models.
+              visibility: true
             - company_name: digitty.io GmbH
               company_logo: digittyio.png
               company_url: https://digitty.io
-              designation: Data Scientist (Feb 2019 - Apr 2020)
+              designation: Data Scientist
+                (Feb 2019 - Apr 2020)
               description: Worked on digitty.io AI platform and Intelligence solution for costomer and business strategy. 
                 Mainly focus on implementing data science projects and product prototyping.
               visibility: true
             - company_name: Samuel.Tseng
               company_logo: selfemployed.jpg
               company_url: https://www.linkedin.com/company/samuel-tseng
-              designation: Freelance Data Science Engineer (Aug 2017 - PRESENT)
+              designation: Freelance Data Science Engineer
+                (Aug 2017 - PRESENT)
               description: Worked on several projects for corporations in Berlin and Taipei. 
                 The latest project was to serve as a Data Science contributor/consultant at Covid-data.info.
               visibility: true
@@ -76,12 +87,13 @@ author_education_details:
 author_project_details:
               - project_thumbnail: team-logo.png
                 project_title: Ist Alles in Ordnung?
-                project_description: A Google Dialogflow application integrated with Python/Flask and Twitter API
+                project_description: "The project of Voice & Travel Hackathon 2019. Tools we used: Azure Cloud Service (deploy), Google Dialogflow, Node.js, Python/Flask, Twitter API."
                 project_url: https://github.com/pymia/ist-alles-in-ordnung
                 visibility: true
               - project_thumbnail: cvparser.jpeg
                 project_title: CV parser
-                project_description: Implemented customized Name Entity Recognition (NER) by spaCy. Recreated 11 classes of name entities, trained the model, wrapped into API and deployed to the cloud.
+                project_description: "One of the featured projects @ digitty.io. Implemented customized Name Entity Recognition (NER) by spaCy.
+                  Recreated 11 classes of name entities, trained the model, wrapped into API, and deployed to the cloud. Tools I used: Amazon S3, Dataturks, Heroku, Apache tika, Docker, Python/Flask, spaCy."
                 project_url: https://github.com/samuelTyh/cv-parser-via-customized-ner
                 visibility: true
                 
