@@ -85,15 +85,20 @@ author_education_details:
                 visibility: true
 
 author_project_details:
+              - project_thumbnail: robots.png
+                project_title: FastAPI implementation - Robots vs Dinos
+                project_description: "A service that provides a REST API to support simulating an army of remote-controlled robots to fight the dinosaurs, supports asynchronous processing. Stacks: Python/FastAPI, GCP Cloud Build, GCP Cloud Run"
+                project_url: https://robots-vs-dinos-api-e2rgcwogsq-ew.a.run.app/redoc
+                visibility: true
               - project_thumbnail: team-logo.png
                 project_title: Ist Alles in Ordnung?
-                project_description: "The project of Voice & Travel Hackathon 2019. Tools we used: Azure Cloud Service (deploy), Google Dialogflow, Node.js, Python/Flask, Twitter API."
+                project_description: "The project of Voice & Travel Hackathon 2019. Stacks: Azure Cloud Service (deploy), Google Dialogflow, Node.js, Python/Flask, Twitter API."
                 project_url: https://github.com/pymia/ist-alles-in-ordnung
                 visibility: true
               - project_thumbnail: cvparser.jpeg
                 project_title: CV parser
                 project_description: "One of the featured projects @ digitty.io. Implemented customized Name Entity Recognition (NER) by spaCy.
-                  Recreated 11 classes of name entities, trained the model, wrapped into API, and deployed to the cloud. Tools I used: Amazon S3, Dataturks, Heroku, Apache tika, Docker, Python/Flask, spaCy."
+                  Recreated 11 classes of name entities, trained the model, wrapped into API, and deployed to the cloud. Stacks: Amazon S3, Dataturks, Heroku, Apache tika, Docker, Python/Flask, spaCy."
                 project_url: https://github.com/samuelTyh/cv-parser-via-customized-ner
                 visibility: true
                 
