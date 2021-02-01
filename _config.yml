@@ -85,15 +85,15 @@ author_education_details:
                 visibility: true
 
 author_project_details:
+              - project_thumbnail: etl-benefits.png
+                project_title: ETL pipeline showcase
+                project_description: "A simple ETL job to extract weather data from WeatherAPI.com to PostgreSQL database."
+                project_url: https://github.com/samuelTyh/ETLdemo
+                visibility: true
               - project_thumbnail: robots.png
                 project_title: FastAPI implementation - Robots vs Dinos
                 project_description: "A service that provides a REST API to support simulating an army of remote-controlled robots to fight the dinosaurs, supports asynchronous processing. Stacks: Python/FastAPI, GCP Cloud Build, GCP Cloud Run"
                 project_url: https://robots-vs-dinos-api-e2rgcwogsq-ew.a.run.app/redoc
-                visibility: true
-              - project_thumbnail: team-logo.png
-                project_title: Ist Alles in Ordnung?
-                project_description: "The project of Voice & Travel Hackathon 2019. Stacks: Azure Cloud Service (deploy), Google Dialogflow, Node.js, Python/Flask, Twitter API."
-                project_url: https://github.com/pymia/ist-alles-in-ordnung
                 visibility: true
               - project_thumbnail: cvparser.jpeg
                 project_title: CV parser
@@ -117,8 +117,8 @@ highlighter: rouge
 permalink: pretty
 
 # pagination of posts
-paginate: 4
-per_page: 5
+paginate: 6
+per_page: 6
 paginate_path: "/blog/page/:num/"
 
 # Search ( add algolia credentials below )
