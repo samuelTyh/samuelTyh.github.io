@@ -13,14 +13,15 @@ permalink: /blog/run-your-own-apache-spark-jobs-in-aws-emr-and-s3
 
 Recently, I participated in Udacity's Nanodegree Program for Data Engineers. It's kinda like to review what I did past and refresh some tech stacks' knowledge for me in the Data Engineering field. Today, I'm gonna writing this article to avoid you spending extra efforts to run a Spark job or other Hadoop eco-systems jobs on AWS. 
 
-This idea comes from the Data Lake demo below, you can find the part I tried to apply through Shell script and Makefile between [S3->EMR->S3] in the figure. The pyspark script I used reference from the project in Course Data Lake.
+This idea comes from the Data Lake demo below, you can find the part I tried to apply through Shell script and Makefile between [S3->EMR->S3] in the figure. The PySpark script I used reference from the project in Course Data Lake, click the photo to check detail.
 
 [ ![](../assets/img/posts/datalake_demo.png){:class="img-responsive"} ](../assets/img/posts/datalake_demo.png)
 
 Before we start, make sure you've already done with registering an AWS account and downloading the credential on [AWS console](https://aws.amazon.com/)(the easiest way, you bet).
 
 ### EMR workflow
-First off, let us have a look at the EMR workflow.
+First off, let us have a look at the EMR workflow, click the photo to check detail.
+
 [ ![](../assets/img/posts/emr-workflow.png){:class="img-responsive"} ](../assets/img/posts/emr-workflow.png)
 
 What we want to do, is to make sure the work of setting up and launching a cluster, adding working steps, creating log files, and terminating the cluster as simple as we can. AWS CLI(command-line interface) builds an easy interface and functional usage for operating various services on AWS. But we are eager to make entire management much simpler and flexible to check the status, even put it aside until the job is finished. 

@@ -6,7 +6,7 @@ subtitle: Tech, Data, Game-Nerd
 email: samuel.tseng.de@gmail.com  # Your Email
 description: >-  
   Personal blog with brief CV, working notes and life sharing.
-baseurl:  # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://samuelTyh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: samuelTyh
 github_username:  samuelTyh
@@ -39,8 +39,8 @@ author_location: Berlin, Germany
 author_website_url: "https://samuelTyh.github.io"
 
 # social links
-twitter_username: samuelTyh
-github_username:  samuelTyh
+# twitter_username: samuelTyh
+# github_username:  samuelTyh
 # facebook_username: SamInDeutschland
 linkedin_username: samuel-tseng
 
