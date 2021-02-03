@@ -42,9 +42,9 @@ aws emr create-cluster \
 --use-default-roles
 ```
 
-Set the command as a variable to load in the next step, add 2 additional arguments `--query '[ClusterId]'`, `--output text` to change the output format and query the information we need, reference the variable `clusterid` in the Shell scripts as below.
+Set the command as a variable to load in the next step, add 2 additional arguments `--query '[ClusterId]'`, `--output text` to change the output format and query the information we need, reference the variable `cluster_id` in the Shell scripts as below.
 ```
-clusterid="$(aws emr create-cluster --name 'My EMR Cluster' \
+cluster_id="$(aws emr create-cluster --name SparkifyEMR \
 --release-label emr-5.31.0 \
 --log-uri "s3://$clustername/logs/" \
 --applications Name=Spark \
@@ -54,32 +54,33 @@ clusterid="$(aws emr create-cluster --name 'My EMR Cluster' \
 --use-default-roles \
 --query '[ClusterId]' \
 --output text)"
-echo -e "\nClusterId: $clusterid"
+echo -e "\nClusterId: $cluster_id"
 ```
 
-Set the second variable `stepid` and query it.
+Set the second variable `step_id` and query it.
 ```
-stepid="$(aws emr add-steps \
---cluster-id "$clusterid" \
---steps "Type=Spark,Name='My ETL pipeline',ActionOnFailure=CONTINUE,\
-Args=[s3://$clustername/<pyspark-script-to-run>,<other-arguments-if-its-essential-in-script>]" \
+step_id="$(aws emr add-steps \
+--cluster-id "$cluster_id" \
+--steps "Type=Spark,Name=SparkifyETL,ActionOnFailure=CONTINUE,\
+Args=[s3://$clustername/run_etl.py,--data_source,$clustername/data/,--output_uri,$clustername/output/]" \
 --query 'StepIds[0]' \
 --output text)"
+echo -e "\nStepId: $step_id"
 ```
 
 Set a while loop to check Spark jobs is finished or not.
 ```
+describe_step="$(aws emr describe-step --cluster-id "$cluster_id" \
+  --step-id "$step_id" --query 'Step.Status.State' --output text)"
+
 while true; do
-  if [[ $(aws emr describe-step --cluster-id "$clusterid" \
-  --step-id "$stepid" --query 'Step.Status.State' --output text) = 'PENDING' ]]; then
+  if [[ $describe_step = 'PENDING' ]]; then
     echo "Cluster creating... Autocheck state 2 mins later"
     sleep 120
-  elif [[ $(aws emr describe-step --cluster-id "$clusterid" \
-  --step-id "$stepid" --query 'Step.Status.State' --output text) = 'RUNNING' ]]; then
+  elif [[ $describe_step = 'RUNNING' ]]; then
     echo "Job running... Autocheck state 30 seconds later"
     sleep 30
-  elif [[ $(aws emr describe-step --cluster-id "$clusterid" \
-  --step-id "$stepid" --query 'Step.Status.State' --output text) = 'FAILED' ]]; then
+  elif [[ $describe_step = 'FAILED' ]]; then
     echo "Job failed"
     break
   else
@@ -92,20 +93,21 @@ done
 After finishing all jobs, terminate the cluster of the jobs complete without error.
 ```
 terminate-cluster="$(aws emr terminate-clusters \
---cluster-ids "$clusterid" \
+--cluster-ids "$cluster_id" \
 --query 'Cluster.Status.State' \
 --output text)"
 
-while [[ $(terminate-cluster) != 'TERMINATED' ]]
-do
-  echo "Cluster terminating..."
-  sleep 15
+while true; do
+  if [[ $(terminate-cluster) != 'TERMINATED' ]]; then
+    echo "Cluster terminating..."
+    sleep 15
+  else
+    echo "Cluster terminated"
+  fi
 done
-
-echo "Cluster terminated"
 ```
 
 ### Conclusion
-Anyway, this script brings you a convenient approach to run one-time Spark jobs in AWS EMR Cluster. You can also check the all lines in the script [here](https://github.com/samuelTyh/Data-Lake/blob/master/scripts/emr.sh) for reference.
+Anyway, this script brings you a convenient approach to run one-time Spark jobs in AWS EMR Cluster. You can also check the all lines in the script [here](https://gist.github.com/samuelTyh/04fb77ae0b81154d2a5b61b17d2635f8) for reference.
 
 if you'd like to try it yourself, follow the tutorial from [AWS official documents](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html) to build and manage your EMR clusters and jobs.
