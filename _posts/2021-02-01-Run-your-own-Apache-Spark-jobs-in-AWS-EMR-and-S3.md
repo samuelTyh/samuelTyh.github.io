@@ -92,13 +92,13 @@ done
 
 After finishing all jobs, terminate the cluster of the jobs complete without error.
 ```
-terminate-cluster="$(aws emr terminate-clusters \
+terminate_cluster="$(aws emr terminate-clusters \
 --cluster-ids "$cluster_id" \
 --query 'Cluster.Status.State' \
 --output text)"
 
 while true; do
-  if [[ $(terminate-cluster) != 'TERMINATED' ]]; then
+  if [[ $terminate_cluster != 'TERMINATED' ]]; then
     echo "Cluster terminating..."
     sleep 15
   else
