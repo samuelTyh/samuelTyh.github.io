@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://samueltyh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://samueltyh.github.io/" rel="alternate" type="text/html" /><updated>2021-04-30T11:42:23+00:00</updated><id>https://samueltyh.github.io/feed.xml</id><title type="html">Show me What you Got</title><subtitle>Personal blog with brief CV, working notes and life sharing.</subtitle><author><name>Samuel Tseng</name></author><entry><title type="html">Useful gadget sharing - cronjob.org</title><link href="https://samueltyh.github.io/blog/useful-gadget-sharing-cronjob-org" rel="alternate" type="text/html" title="Useful gadget sharing - cronjob.org" /><published>2021-04-30T10:35:31+00:00</published><updated>2021-04-30T10:35:31+00:00</updated><id>https://samueltyh.github.io/blog/Useful-gadget-sharing-cronjob-org</id><content type="html" xml:base="https://samueltyh.github.io/blog/useful-gadget-sharing-cronjob-org">&lt;h1 id=&quot;useful-gadget-sharing---cron-joborg&quot;&gt;Useful gadget sharing - cron-job.org&lt;/h1&gt;
+
+&lt;p&gt;Due to initiating to maintain my side projects which have done before, I started investigating any pain points that needed to be improved or could be divided into small projects.&lt;/p&gt;
+
+&lt;h2 id=&quot;story&quot;&gt;Story&lt;/h2&gt;
+
+&lt;p&gt;I want to introduce a really cool, simple but useful gadget for you, cron-job.org.&lt;/p&gt;
+
+&lt;p&gt;The context was that I had a side project which deployed on Heroku. Heroku is a really convenient platform that provides a basic deployment environment for someone who wants to build their website or front-end app interface.&lt;/p&gt;
+
+&lt;p&gt;In short, Heroku free tier is quite sufficient for me. But your app is put to down after 30 mins of inactivity, and will need around 5–10 seconds to wake up the app again. If your app cannot tolerate that in any circumstance, you may want to try some approaches to avoid your app sleep again but still free. Pinging your app on a set interval might be an economy way to achieve it.&lt;/p&gt;
+
+&lt;h2 id=&quot;approach&quot;&gt;Approach&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Make sure you have a simple GET request to your app homepage. For example, if your app is hosted at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;your-app.herokuapp.com&lt;/code&gt;, make sure you have a GET method handling &lt;strong&gt;“/”&lt;/strong&gt; route. Or, have a GET method at some other route.&lt;/li&gt;
+  &lt;li&gt;Once that’s completed, we can either handle pinging our own app manually or automate the process. The Heroku free tier requires applications to sleep a minimum of seven hours every day. Unverified accounts get 550 of free dyno hours per month, which is equal to almost 7 hours of sleep time for a month of 31 days. To be on the safe side, we’ll go with seven hours of sleep.&lt;/li&gt;
+  &lt;li&gt;The example GET function writing in Python/Flask&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/ping'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'GET'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;CV parser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;requested_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ok&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsonify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;using-cronjoborg-to-keep-your-app-alive&quot;&gt;Using &lt;a href=&quot;http://cronjob.org&quot;&gt;cronjob.org&lt;/a&gt; to keep your app alive&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Signup on &lt;a href=&quot;https://cron-job.org/en/&quot;&gt;https://cron-job.org/en/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Verify your email once the signup is done.&lt;/li&gt;
+  &lt;li&gt;Log in and click on the Cronjobs tab. And click on “Create cronjob”.&lt;/li&gt;
+  &lt;li&gt;Fill in the details. Enter URL according to your GET method. For example, my URL will be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://you.herokuapp.com/ping&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/img/posts/schedule_example.mov&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Schedule the execution time from 8 to 23 every 30 minutes every day&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can also check the execution detail in dashboard&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/cronjob_dashboard.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/cronjob_dashboard.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">Useful gadget sharing - cron-job.org</summary></entry><entry><title type="html">Run your own Apache Spark jobs in AWS EMR and S3</title><link href="https://samueltyh.github.io/blog/run-your-own-apache-spark-jobs-in-aws-emr-and-s3" rel="alternate" type="text/html" title="Run your own Apache Spark jobs in AWS EMR and S3" /><published>2021-02-01T12:55:31+00:00</published><updated>2021-02-01T12:55:31+00:00</updated><id>https://samueltyh.github.io/blog/Run-your-own-Apache-Spark-jobs-in-AWS-EMR-and-S3</id><content type="html" xml:base="https://samueltyh.github.io/blog/run-your-own-apache-spark-jobs-in-aws-emr-and-s3">&lt;h2 id=&quot;run-your-own-apache-spark-jobs-in-aws-emr-and-s3&quot;&gt;Run your own Apache Spark jobs in AWS EMR and S3&lt;/h2&gt;
+
+&lt;p&gt;Recently, I participated in Udacity’s Nanodegree Program for Data Engineers. It’s kinda like to review what I did past and refresh some tech stacks’ knowledge for me in the Data Engineering field. Today, I’m gonna writing this article to avoid you spending extra efforts to run a Spark job or other Hadoop eco-systems jobs on AWS.&lt;/p&gt;
+
+&lt;p&gt;This idea comes from the Data Lake demo below, you can find the part I tried to apply through Shell script and Makefile between [S3-&amp;gt;EMR-&amp;gt;S3] in the figure. The PySpark script I used reference from the project in Course Data Lake, click the photo to check detail.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/datalake_demo.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/datalake_demo.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Before we start, make sure you’ve already done with registering an AWS account and downloading the credential on &lt;a href=&quot;https://aws.amazon.com/&quot;&gt;AWS console&lt;/a&gt;(the easiest way, you bet).&lt;/p&gt;
+
+&lt;h3 id=&quot;emr-workflow&quot;&gt;EMR workflow&lt;/h3&gt;
+&lt;p&gt;First off, let us have a look at the EMR workflow, click the photo to check detail.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/emr-workflow.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/emr-workflow.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;What we want to do, is to make sure the work of setting up and launching a cluster, adding working steps, creating log files, and terminating the cluster as simple as we can. AWS CLI(command-line interface) builds an easy interface and functional usage for operating various services on AWS. But we are eager to make entire management much simpler and flexible to check the status, even put it aside until the job is finished.&lt;/p&gt;
+
+&lt;p&gt;Of course, you have other choices like SDK for different languages, like &lt;a href=&quot;https://docs.aws.amazon.com/pythonsdk/?id=docs_gateway&quot;&gt;Python SDK&lt;/a&gt; or &lt;a href=&quot;https://docs.aws.amazon.com/sdk-for-java/?id=docs_gateway&quot;&gt;Java SDK&lt;/a&gt; if you like. In my experiences, every SDK sometimes use a different version of libraries or packages, you should be aware of the supporting version on each service you choose.&lt;/p&gt;
+
+&lt;h3 id=&quot;idea-and-practice&quot;&gt;Idea and Practice&lt;/h3&gt;
+&lt;p&gt;We can choose the easy-checking cli command for pipeline, such as creating-cluster, add-steps, and terminate-clusters.
+The cli command from document is shown below.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws emr create-cluster \
+--name &quot;My First EMR Cluster&quot; \
+--release-label emr-5.31.0 \
+--applications Name=Spark \
+--ec2-attributes KeyName=myEMRKeyPairName \
+--instance-type m5.xlarge \
+--instance-count 3 \
+--use-default-roles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Set the command as a variable to load in the next step, add 2 additional arguments &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--query '[ClusterId]'&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--output text&lt;/code&gt; to change the output format and query the information we need, reference the variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cluster_id&lt;/code&gt; in the Shell scripts as below.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cluster_id=&quot;$(aws emr create-cluster --name SparkifyEMR \
+--release-label emr-5.31.0 \
+--log-uri &quot;s3://$clustername/logs/&quot; \
+--applications Name=Spark \
+--ec2-attributes KeyName=&quot;$keyname&quot; \
+--instance-type m5.xlarge \
+--instance-count 3 \
+--use-default-roles \
+--query '[ClusterId]' \
+--output text)&quot;
+echo -e &quot;\nClusterId: $cluster_id&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Set the second variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;step_id&lt;/code&gt; and query it.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;step_id=&quot;$(aws emr add-steps \
+--cluster-id &quot;$cluster_id&quot; \
+--steps &quot;Type=Spark,Name=SparkifyETL,ActionOnFailure=CONTINUE,\
+Args=[s3://$clustername/run_etl.py,--data_source,$clustername/data/,--output_uri,$clustername/output/]&quot; \
+--query 'StepIds[0]' \
+--output text)&quot;
+echo -e &quot;\nStepId: $step_id&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Set a while loop to check Spark jobs is finished or not.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;describe_step=&quot;$(aws emr describe-step --cluster-id &quot;$cluster_id&quot; \
+  --step-id &quot;$step_id&quot; --query 'Step.Status.State' --output text)&quot;
+
+while true; do
+  if [[ $describe_step = 'PENDING' ]]; then
+    echo &quot;Cluster creating... Autocheck state 2 mins later&quot;
+    sleep 120
+  elif [[ $describe_step = 'RUNNING' ]]; then
+    echo &quot;Job running... Autocheck state 30 seconds later&quot;
+    sleep 30
+  elif [[ $describe_step = 'FAILED' ]]; then
+    echo &quot;Job failed&quot;
+    break
+  else
+    echo &quot;Job completed&quot;
+    break
+  fi
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After finishing all jobs, terminate the cluster of the jobs complete without error.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terminate_cluster=&quot;$(aws emr terminate-clusters \
+--cluster-ids &quot;$cluster_id&quot; \
+--query 'Cluster.Status.State' \
+--output text)&quot;
+
+while true; do
+  if [[ $terminate_cluster != 'TERMINATED' ]]; then
+    echo &quot;Cluster terminating...&quot;
+    sleep 15
+  else
+    echo &quot;Cluster terminated&quot;
+  fi
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Anyway, this script brings you a convenient approach to run one-time Spark jobs in AWS EMR Cluster. You can also check the all lines in the script &lt;a href=&quot;https://gist.github.com/samuelTyh/04fb77ae0b81154d2a5b61b17d2635f8&quot;&gt;here&lt;/a&gt; for reference.&lt;/p&gt;
+
+&lt;p&gt;if you’d like to try it yourself, follow the tutorial from &lt;a href=&quot;https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html&quot;&gt;AWS official documents&lt;/a&gt; to build and manage your EMR clusters and jobs.&lt;/p&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">Run your own Apache Spark jobs in AWS EMR and S3</summary></entry><entry><title type="html">The 40 Machine Learning Theory questions I got during an interview - 2</title><link href="https://samueltyh.github.io/blog/40-machine-learning-theory-questions-i-got-during-an-interview-2" rel="alternate" type="text/html" title="The 40 Machine Learning Theory questions I got during an interview - 2" /><published>2020-04-21T14:40:31+00:00</published><updated>2020-04-21T14:40:31+00:00</updated><id>https://samueltyh.github.io/blog/The-40-Machine-Learning-Theory-questions-I-got-during-an-interview-2</id><content type="html" xml:base="https://samueltyh.github.io/blog/40-machine-learning-theory-questions-i-got-during-an-interview-2">&lt;h2 id=&quot;the-40-machine-learning-theory-questions-i-got-during-an-interview---2&quot;&gt;The 40 Machine Learning Theory questions I got during an interview - 2&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;(Keep updated)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Dictionary keys in Python must be:&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Alphanumeric&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Hashable types&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Iterables&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Implement the &lt;strong&gt;dict&lt;/strong&gt;() method&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the Pokemon!&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Koffing&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Keras&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Theano&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Pandas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What is the output size of a 7x7x1 picture after a convolutional layer with a single filter with size 3x3,  no padding and strides of 1 in each direction?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;7x7x1&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;6x6x1&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;4x4x1&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;5x5x1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following is not a regularization method?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Dropout&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Parameter sharing&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;RMSprop&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Early stopping&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following activation results in the highest output when x = 2?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Tanh(x)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ReLU(x)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Sigmoid(x)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ELU(x)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The primary contribution of Resnet [2015] was:&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;iteratively training two neural nets in a zero-sum framework&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;adding a differentiable read/write external memory bank&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;using fully convolution CNNs, to accept any input image size&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;using skip connections to train deeper networks&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following are techniques for parallelizing neural net training?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Train model with different examples on different servers&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Calculate forward pass and backward pass separately&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Train parts of very large models on different servers&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Keep input data and model parameters on separate servers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The main advantage of training NN’s on GPU’s is:&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;fast memory loading&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;energy efficiency&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;greater parallelism&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;cheaper hardware&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;EM (expectation maximization) is&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A segmentation algorithm&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An optimization technique for latent variable models&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A clustering algorithm&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A popular inference algorithm for conditional random fields&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A class of functions, F, can shatter a dataset of size n if:&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;it achieves zero training loss on every possible labelling of the dataset&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;it achieves zero evaluation loss on every possible labelling of the dataset&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;it has sufficient capacity&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;it has infinite VC dimension&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Starting from x=0, which of the following optimisation methods will converge to the minimum at x=2 of the function f(x) shown below?&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/31.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/31.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Gradient descent with learning rate 4&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Newton’s method applied to f(x)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Newton’s method applied to the derivative df/dx&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Gradient descent with learning rate 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following are non-linear classifiers?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;PCA&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;VGG-16&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Random Forest&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;SVM (no kernel)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Consider the following neural network with the given weights. Which boolean functions does it compute, if we’re using sigmoid as the activation function? (image below)&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/33.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/33.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;OR&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;AND&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;NAND&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;XOR&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following is the first derivative of the sigmoid function (image below)?&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/34.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/34.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;a)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;b)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;c)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;d)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assuming your data exists on some compact subset of R^n, how many hidden layers are necessary for a neural network to be able to represent any continuous function?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;0&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;1&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;2&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;10&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You train a GAN to generate pictures of cute dogs and cats (30% dogs, 70% cats) by sampling the latent variable from a high dimensional, isotropic (no covariance) Gaussian with mean/mode 0 and variance 1 feeding through the generator. After training, you feed the 0 vector through your generator. Your sample looks nothing like a dog. Why?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The network has only learned to generate cat-dog hybrids&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A Gaussian distribution with mean 0 and 1 variance is not the right distribution for this task&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The network has seen almost no training points “close” to the mode&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The mode corresponds to the most probable class, i.e. a cat not a dog&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When training a neural net, what is an advantage of using minibatch gradient descent over single-example gradient descent&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Smoother convergence&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Reduces training loss&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Allows for batch normalization&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Higher training throughput&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Which of the following perturbations to a normal example are very likely to create an example that would trick a well-trained neural net to predict the wrong class with high confidence?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Adding noise sampled from a Gaussian distribution&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Adding a positive multiple of the gradient of the cost function with respect to the input&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Adding a negative multiple of the gradient of the cost function with respect to the input.&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Adding noise sampled from a Gaussian distribution, and then adding a positive multiple of the gradient of the cost function with respect to the input (after it’s been perturbed by the noise)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What can you say about a ROC (receiver operating characteristic) curve vs. a PR (precision recall) curve for evaluating a model?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Both curves have specificity on one of their axes&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Both curves have sensitivity on one of their axes&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;PR curves are invariant to changes in the relative class frequency&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ROC curves are invariant to changes in the relative class frequency&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What are true statements about LSTMs and vanilla RNNs?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;LSTM is a type of RNN&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Vanilla RNNs are great at handling long-term dependencies&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The input and forget gates are coupled in a LSTM&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;LSTMs often perform better than vanilla RNNs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Samuel Tseng</name></author><category term="job_interview" /><summary type="html">The 40 Machine Learning Theory questions I got during an interview - 2 (Keep updated)</summary></entry><entry><title type="html">The 40 Machine Learning Theory questions I got during an intervie - 1</title><link href="https://samueltyh.github.io/blog/40-machine-learning-theory-questions-i-got-during-an-interview-1" rel="alternate" type="text/html" title="The 40 Machine Learning Theory questions I got during an intervie - 1" /><published>2020-04-20T09:05:22+00:00</published><updated>2020-04-20T09:05:22+00:00</updated><id>https://samueltyh.github.io/blog/The-40-Machine-Learning-Theory-questions-I-got-during-an-interview-1</id><content type="html" xml:base="https://samueltyh.github.io/blog/40-machine-learning-theory-questions-i-got-during-an-interview-1">&lt;h2 id=&quot;the-40-machine-learning-theory-questions-i-got-during-an-interview---1&quot;&gt;The 40 Machine Learning Theory questions I got during an interview - 1&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;(Keep updated)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;the-following-content-is-from-a-machine-learning-theory-exam-i-took-when-i-applied-for-a-machine-learning-engineer-i-had-to-finish-40-questions-in-40-minutes-the-reason-why-i-especially-post-this-article-and-the-next-one-is-that-help-me-out-to-keep-my-interviews-record-and-review-what-i-went-through-the-entire-process-here-by-blog-posting-to-review-what-i-have-to-improve-immediately-also-strengthen-my-basic-domain-knowledge-ill-put-this-on-my-github-and-set-it-public-do-not-hesitate-to-send-me-the-pull-request-if-there-is-any-issue-in-the-reviews-below&quot;&gt;The following content is from a Machine Learning Theory exam I took when I applied for a machine learning engineer, I had to finish 40 questions in 40 minutes. The reason why I especially post this article and the next one is that help me out to keep my interview’s record and review what I went through the entire process here. By blog posting to review what I have to improve immediately, also strengthen my basic domain knowledge. I’ll put this on my Github and set it public. Do not hesitate to send me the pull request, if there is any issue in the reviews below.&lt;/h5&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Given the train and test loss curves below, what actions would help?&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/1.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/1.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Increase model capacity&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add dropout&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Debug network implementation&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Gather more training data&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What is the difference between a naive Bayes and a logistic regression model?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;A Naive Bayes model assumes the features are conditionally independent, a logistic regression does not&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Naive Bayes is discriminative, logistic regression generative&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Naive Bayes requires a model of the data X given the class y, logistic regression only models the probability of y given X&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Logistic regression assumes the classes follow a Gaussian distribution, Naive Bayes makes no such assumption&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;reference 1: &lt;a href=&quot;https://dataespresso.com/en/2017/10/24/comparison-between-naive-bayes-and-logistic-regression/&quot;&gt;Comparison between Naïve Bayes and Logistic Regression&lt;/a&gt;
+ reference 2: &lt;a href=&quot;https://machinelearningmastery.com/logistic-regression-for-machine-learning/&quot;&gt;Logistic Regression for Machine Learning&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Why is a computation written in Numpy usually faster than the same computation implemented in native Python?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Numpy operations are parallelized on a GPU if your hardware supports this&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Unlike Python, Numpy leverages just-in-time compilation&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Numpy operations are parallelized over multiple CPUs if your hardware supports this&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Numpy operations are vectorized, which means that array operations don’t go through Python loops&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;reference: &lt;a href=&quot;https://datascience.blog.wzb.eu/2018/02/02/vectorization-and-parallelization-in-python-with-numpy-and-pandas/&quot;&gt;VECTORIZATION AND PARALLELIZATION IN PYTHON WITH NUMPY AND PANDAS&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What are major computer vision and machine learning conferences?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ECCV, ICCV, NICR, ICLR, CVPR, ICML&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;ICCV, ICML, ECCV, CVPR, NeurIPS, ICLR&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ICML, CVPN, NeurIPS, ICCV, ICLR, ECCV&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;VACV, ICML, CVPR, NeurIPS, ECCV, ICML&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As a rule of thumb, how does the accuracy of a model tend to scale with the amount of training data?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Model accuracy scales linearly with the amount of data&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Model accuracy scales logarithmically with the amount of data&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Model accuracy scales exponentially with the amount of data&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Model accuracy and the amount of training data are not related&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;What is the difference between variational inference and sampling in graphical models?&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Variational inferences gives the true value of an approximate posterior&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Sampling gives an approximate value of the true posterior&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Sampling is often much harder to implement&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Variational inference requires a variational autoencoder&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You are given a revolver with six slots. There are two adjacent bullets. You have to shoot twice and are given the chance to rotate the cylinder randomly in-between. How do you maximize your chance of survival?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Rotate cylinder&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Do not rotate cylinder&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;It does not matter, as the survival chance is the same in both cases&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;The question does not give all information required to answer the question&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;While training a model, you see it start to output NaN as its loss value. Which of the following is most likely to remedy this?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Reduce the size of your training data set&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Increase the number of parameters in your model&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Reduce your learning rate&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Increase your learning rate&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Why do researchers tend to split their dataset into 3 parts (training, validation, testing)?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;To have 2 independent subsets (validation and testing) on which they can constantly evaluate&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;There is no good reason for that, it is just a convention&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;To make sure that the model generalizes well&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;To be able to tune hyperparameters properly&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You are trying to predict a continuous variable with your model. Instead of training it for regression you decide to discretize the variable and train the model for classification instead. Why would you do it?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;There is no argument for doing so&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The accuracy of the model will be much higher&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;You cannot train a neural network for regression&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;When training for regression the optimization can be less stable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You see this training plot, the learning rate was constant during training. What do you suspect went wrong?&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/11.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/11.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Learning rate too high&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Learning rate too low&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Bad model initialization&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Model capacity not large enough&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You’re considering adding one of the following layers in the middle of your neural network. Which of them is NOT differentiable for backpropagation?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Batch normalization&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Convolution&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Dropout&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Argmax&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How does the number of parameters in three consecutive layers of stride-1 3x3 convolutions compare to that of a single layer of a 7x7 convolution (all convolutions have the same number of output channels)?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The single 7x7 layer has a larger receptive field&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The three 3x3 stride 1 convolutional layers have a larger receptive field&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;They have the same receptive field&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;You cannot compare these layers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How does the number of parameters in three consecutive layers of stride-1 3x3 convolutions compare to that of a single layer of a 7x7 convolution?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The single 7x7 layer has fewer parameters&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The three 3x3 stride 1 convolutional layers have fewer parameters&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;They have the same number of parameters&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;You cannot compare these layers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Please select your answer(s) below:&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;../assets/img/posts/merantix_interview/15.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/merantix_interview/15.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;a&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;b&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;c&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;d&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You’re training a softmax classifier on 23 classes. What do you expect the cross-entropy loss and accuracy to be at the beginning, assuming proper initialization?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Loss: 2.3, accuracy: 4.3%&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Loss: 3.1, accuracy: 4.3%&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Loss: 2.3, accuracy: 10%&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Loss: 3.1, accuracy: 10%&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A dust particle starts flying around from the point (1, 1) in the xy plane. What’s the probability that the first time it hits the x-axis is on the negative half?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;½&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;⅓&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;¼&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;⅛&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What can you try to increase the performance of a model when training and testing accuracy converges to about the same?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Decrease the model capacity&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Performance cannot get any better&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Increase the model capacity&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Early stopping&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You are training a model using ReLU activation functions. After some training, you notice many units never activate.  What are some plausible actions you could take to get more units to activate? Check all that apply:&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Use Leaky ReLU units&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Use a momentum-based gradient method during backpropagation&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add positive bias when initializing weights&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Decrease batch size&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Let’s compare the following methods for hyperparameter optimization: Random Search, Grid Search and Bayesian Hyperparameter Optimization. Which of the following statements are true?&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Grid Search is better than Random Search because we can express our domain knowledge about hyperparameters more precisely because the former is deterministic&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Bayesian Hyperparameter Optimization is preferable over Random Search because we can leverage knowledge about what we have learned during prior optimization runs&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Random Search is preferable over Grid Search because while exploring irrelevant changes in some hyperparameters we may still explore relevant changes in others&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Bayesian Hyperparameter Optimization and Random Search are equally preferable because for both we can specify our prior assumptions in terms of probability distributions&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Reference: &lt;a href=&quot;https://towardsdatascience.com/automated-machine-learning-hyperparameter-tuning-in-python-dfda59b72f8a&quot;&gt;Automated Machine Learning Hyperparameter Tuning in Python&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Samuel Tseng</name></author><category term="job_interview" /><summary type="html">The 40 Machine Learning Theory questions I got during an interview - 1 (Keep updated)</summary></entry><entry><title type="html">How to train a customized Name Entities Recognition (NER) model based on spaCy pre-trained model</title><link href="https://samueltyh.github.io/blog/train-a-customized-name-entities-recognition-model-based-on-spacy-pre-trained-model" rel="alternate" type="text/html" title="How to train a customized Name Entities Recognition (NER) model based on spaCy pre-trained model" /><published>2020-03-04T15:12:30+00:00</published><updated>2020-03-04T15:12:30+00:00</updated><id>https://samueltyh.github.io/blog/How-to-train-a-customized-Name-Entities-Recognition-model-based-on-spaCy-pre-trained-model</id><content type="html" xml:base="https://samueltyh.github.io/blog/train-a-customized-name-entities-recognition-model-based-on-spacy-pre-trained-model">&lt;h2 id=&quot;how-to-train-a-customized-name-entities-recognition-ner-model-based-on-spacy-pre-trained-model&quot;&gt;How to train a customized Name Entities Recognition (NER) model based on spaCy pre-trained model&lt;/h2&gt;
+
+&lt;p&gt;There are a bunch of online resources to teach you how to train your own NER model by spaCy, so I will attach some links for reference and skip this part.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://spacy.io/usage/training#ner&quot;&gt;spaCy: Training the named entity recognizer&lt;/a&gt;
+&lt;a href=&quot;https://medium.com/@dataturks/convert-spacy-training-data-to-dataturks-ner-json-output-949259865c47&quot;&gt;Convert SpaCy training data to Dataturks NER JSON output&lt;/a&gt;
+&lt;a href=&quot;https://towardsdatascience.com/custom-named-entity-recognition-using-spacy-7140ebbb3718&quot;&gt;Custom Named Entity Recognition Using spaCy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Back to our main point of this article, and let’s check the following code. I’m trying to train a customized NER model and retain the other pipeline in spaCy, i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tagger&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parser&lt;/code&gt;. You can also add your own pipeline into the model as well.&lt;/p&gt;
+
+&lt;p&gt;Write a function as below, and load the model if you’ve pointed it out. I used default pre-trained model &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;en_core_web_sm&lt;/code&gt; here.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def train_spacy(self, training_data, testing_data, dropout, display_freq=1, 
+                output_dir=None, new_model_name=&quot;en_model&quot;):
+    # create the built-in pipeline components and add them to the pipeline
+    # nlp.create_pipe works for built-ins that are registered with spaCy
+    # create blank Language class
+    
+    if self.model:
+        nlp = spacy.load(self.model)
+    else:
+        nlp = spacy.blank('en')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The following is just like the tutorial from spaCy official website, create the pipeline or grab it, then add labels from the training data you’ve annotated already.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    if 'ner' not in nlp.pipe_names:
+        ner = nlp.create_pipe('ner')
+        nlp.add_pipe(ner, last=True)
+    else:
+        ner = nlp.get_pipe('ner')
+
+    # add labels
+    for _, annotations in training_data:
+        for ent in annotations.get('entities'):
+            ner.add_label(ent[2])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And now, let’s training. The initial loss as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100000&lt;/code&gt;, and I set up the early stop to avoid overfitting.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # get names of other pipes to disable them during training
+    other_pipes = [pipe for pipe in nlp.pipe_names if pipe != 'ner']
+    with nlp.disable_pipes(*other_pipes):  # only train NER
+        optimizer = nlp.begin_training()
+        print(&quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;  Training the model  &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;\n&quot;)
+
+        losses_best = 100000
+        early_stop = 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use stochastic gradient descent as optimizer with mini-batch configuration, get more insights &lt;a href=&quot;https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        for itn in range(self.n_iter):
+            print(f&quot;Starting iteration {itn + 1}&quot;)
+            random.shuffle(training_data)
+            losses = {}
+            batches = minibatch(training_data, size=compounding(4., 32., 1.001))
+            for batch in batches:
+                text, annotations = zip(*batch)
+                nlp.update(
+                    text,  # batch of texts
+                    annotations,  # batch of annotations
+                    drop=dropout,  # dropout - make it harder to memorise data
+                    sgd=optimizer,  # callable to update weights
+                    losses=losses)
+
+            if itn % display_freq == 0:
+                print(f&quot;Iteration {itn + 1} Loss: {losses}&quot;)
+
+            if losses[&quot;ner&quot;] &amp;lt; losses_best:
+                early_stop = 0
+                losses_best = int(losses[&quot;ner&quot;])
+            else:
+                early_stop += 1
+
+            print(f&quot;Training will stop if the value reached {self.not_improve}, &quot;
+                  f&quot;and it's {early_stop} now.\n&quot;)
+
+            if early_stop &amp;gt;= self.not_improve:
+                break
+
+        print(&quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;  Finished training  &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After training, dump the model as a binary data to your on-premises disk. Put the last 10 lines inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with nlp.disable_pipes(*other_pipes):&lt;/code&gt; will save the only &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ner&lt;/code&gt; pipeline. Otherwise, the entire model will be saved, that’s exactly what I need.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        if output_dir:
+            path = output_dir + f&quot;en_model_ner_{round(losses_best, 2)}&quot;
+        else:
+            path = os.getcwd() + f&quot;/lib/inactive_model/en_model_ner_{round(losses_best, 2)}&quot;
+            os.mkdir(path)
+        if testing_data:
+            self.validate_spacy(model=nlp, data=testing_data)
+
+    with nlp.use_params(optimizer.averages):
+        nlp.meta[&quot;name&quot;] = new_model_name
+        bytes_data = nlp.to_bytes()
+        lang = nlp.meta[&quot;lang&quot;]
+        pipeline = nlp.meta[&quot;pipeline&quot;]
+
+    model_data = dict(bytes_data=bytes_data, lang=lang, pipeline=pipeline)
+
+    with open(path + '/model.pkl', 'wb') as f:
+        pickle.dump(model_data, f)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can load the model by the following function to load your model by your specified path on your disk.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def load_model(model_path):
+    with open(model_path + '/model.pkl', 'rb') as f:
+        model = pickle.load(f)
+    nlp = spacy.blank(model['lang'])
+    for pipe_name in model['pipeline']:
+        pipe = nlp.create_pipe(pipe_name)
+        nlp.add_pipe(pipe)
+    nlp.from_bytes(model['bytes_data'])
+    return nlp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">How to train a customized Name Entities Recognition (NER) model based on spaCy pre-trained model</summary></entry><entry><title type="html">Connect PostgreSQL in docker container with Azure Data Studio</title><link href="https://samueltyh.github.io/blog/connect-postgresql-in-docker-container-with-azure-data-studio" rel="alternate" type="text/html" title="Connect PostgreSQL in docker container with Azure Data Studio" /><published>2020-02-05T12:39:30+00:00</published><updated>2020-02-05T12:39:30+00:00</updated><id>https://samueltyh.github.io/blog/connect-postgresql-in-docker-container-with-azure-data-studio</id><content type="html" xml:base="https://samueltyh.github.io/blog/connect-postgresql-in-docker-container-with-azure-data-studio">&lt;h2 id=&quot;connect-postgresql-in-docker-container-with-azure-data-studio&quot;&gt;Connect PostgreSQL in docker container with Azure Data Studio&lt;/h2&gt;
+
+&lt;p&gt;Azure Data Studio is a cool product that can easily connect MySQL (if you already installed in your system) and show what in your database look like. What if we use PostgresSQL instead of MySQL, how should we start?&lt;/p&gt;
+
+&lt;p&gt;The 1st step, I decided to pull Postgres’s docker image but not to install at root.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker pull postgres
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Second, run the container, remember to set the port for local connecting (the document didn’t mention it)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker run --name postgres-docker -e POSTGRES_PASSWROD=secret_password -p 5432:5432 -d postgres
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;then you will get container id, also can check it by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker ps&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                      NAMES
+ba01d334f4db        postgres              &quot;docker-entrypoint.s…&quot;   37 minutes ago      Up 37 minutes       0.0.0.0:5432-&amp;gt;5432/tcp     postgres-docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;After running the container, we could start the next step, set up the connection in Azure Data Studio.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-install-postgresql-plug-in&quot;&gt;1. Install PostgreSQL plug-in.&lt;/h3&gt;
+&lt;p&gt;Choose the extension’s icon and search Postgres then install it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/WukfL9H.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/WukfL9H.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-click-new-connection-choose-postgresql-as-your-database&quot;&gt;2. Click new connection, choose PostgreSQL as your database.&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/ACogtlC.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/ACogtlC.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-enter-the-required-information&quot;&gt;3. Enter the required information.&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/QCwXWTX.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/QCwXWTX.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;4-remember-to-set-port-in-advanced-setting&quot;&gt;4. Remember to set port in advanced setting.&lt;/h3&gt;
+&lt;p&gt;Enter the ip and port as same as you assigned to docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/n6oFLe2.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/n6oFLe2.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;5-connect-and-start-to-work-in-the-database&quot;&gt;5. Connect and start to work in the database.&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;../assets/img/posts/V0rhy7k.png&quot;&gt; &lt;img src=&quot;../assets/img/posts/V0rhy7k.png&quot; alt=&quot;&quot; class=&quot;img-responsive&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;So far, the most important part is that remember to assign port when you run the docker container and enter the correct connection details, then it can keep your life much easier.&lt;/p&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">Connect PostgreSQL in docker container with Azure Data Studio</summary></entry><entry><title type="html">Setting both Celery and Flask inside the docker-compose</title><link href="https://samueltyh.github.io/blog/setting-both-celery-and-flask-inside-the-docker-compose" rel="alternate" type="text/html" title="Setting both Celery and Flask inside the docker-compose" /><published>2020-02-04T21:44:12+00:00</published><updated>2020-02-04T21:44:12+00:00</updated><id>https://samueltyh.github.io/blog/Setting-both-Celery-and-Flask-inside-the-docker-compose</id><content type="html" xml:base="https://samueltyh.github.io/blog/setting-both-celery-and-flask-inside-the-docker-compose">&lt;h2 id=&quot;setting-both-celery-and-flask-inside-the-docker-compose&quot;&gt;Setting both Celery and Flask inside the docker-compose&lt;/h2&gt;
+
+&lt;p&gt;Due to the issue I need to resolve is that put the heavy task to background, then run it periodically or asynchronously. And the most important thing is that have to support Python.
+I found Celery, the excellent tool to implement distributed task queue by Python, can easily deal with request using asynchronous designing.
+It seems like a perfect solution for my issue, however, there has still a new problem arised, what is I need to focus on processing the task ran by Flask and packed in docker and running by docker compose, it is difficult to find all of these resources at the same time on the Internet.
+So let’s started!&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;my-article-is-referenced-from-the-following-resources&quot;&gt;My article is referenced from the following resources:&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/&quot;&gt;Asynchronous Tasks with Flask and Redis Queue&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ViktorSalimonov/pylette?source=post_page---------------------------&quot;&gt;The web-service for extracting dominant color from images.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.miguelgrinberg.com/post/using-celery-with-flask&quot;&gt;Using Celery with Flask&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://andyjin.applinzi.com/?p=1230&quot;&gt;Flask + Celery tutorial (Mandarin resource)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forster.site/2016-11-17-celery.html&quot;&gt;Task schduling with Celery (Mandarin resource)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;app-structure-displaying&quot;&gt;App Structure Displaying&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Flask_Celery_example
+|
+├── api
+|   ├── __init__.py
+|   ├── app.py               
+|   ├── celery_app.py
+|   ├── config.py
+|   ├── Dockerfile
+|   └── requirements.txt
+|
+├── docker-compose.yml
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;set-up-your-redis-and-celery-worker-in-docker-compose-the-breaking-point-is-to-set-up-the-celery-workers-name-well&quot;&gt;Set up your Redis and Celery worker in docker-compose, the breaking point is to set up the celery worker’s name well.&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &quot;3&quot;
+
+services:
+  web:
+    container_name: web
+    build: ./api
+    ports:
+      - &quot;5000:5000&quot;
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./api:/app
+
+  redis:
+    container_name: redis
+    image: redis:5.0.5
+    hostname: redis
+
+  worker:
+    build:
+      context: ./api
+    hostname: worker
+    entrypoint: celery
+    command: -A celery_app.celery worker --loglevel=info
+    volumes:
+      - ./api:/app
+    links:
+      - redis
+    depends_on:
+      - redis
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;what-the-dockerfile-in-this-example-looks-like&quot;&gt;What the Dockerfile in this example looks like.&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM python:3.6.5
+
+WORKDIR /app
+
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD [ &quot;python&quot;, &quot;./app.py&quot; ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;initialize-celery-worker-and-create-asynchronous-or-scheduled-task-in-celery_apppy&quot;&gt;Initialize Celery worker and create asynchronous or scheduled task in celery_app.py&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import config
+from celery import Celery
+
+
+# Initialize Celery
+celery = Celery(
+    'worker', 
+    broker=config.CeleryConfig.CELERY_BROKER_URL,
+    backend=config.CeleryConfig.CELERY_RESULT_BACKEND
+)
+
+
+@celery.task()
+def func1(arg):
+    ...
+    return ...
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;run-task-by-flask-and-check-its-status-in-apppy&quot;&gt;Run task by Flask and check its status in app.py&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import config
+from celery_app import func1
+from flask import Flask, request, jsonify, url_for, redirect
+
+
+# Your API definition
+app = Flask(__name__)
+app.config.from_object('config.FlaskConfig')
+
+@app.route('/', methods=['POST'])
+def longtask():
+    task = func1.delay(arg)
+    return redirect(url_for('taskstatus', task_id=task.id))
+    
+@app.route('/status/&amp;lt;task_id&amp;gt;')
+def taskstatus(task_id):
+    task = func1.AsyncResult(task_id)
+    if task.state == 'PENDING':
+        time.sleep(config.SERVER_SLEEP)
+        response = {
+            'queue_state': task.state,
+            'status': 'Process is ongoing...',
+            'status_update': url_for('taskstatus', task_id=task.id)
+        }
+    else:
+        response = {
+            'queue_state': task.state,
+            'result': task.wait()
+        }
+    return jsonify(response)
+
+
+if __name__ == '__main__':
+    app.run()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;after-finishing-the-all-setting-we-can-run-the-script-on-terminal-below-to-create-container-and-run-it&quot;&gt;After finishing the all setting, we can run the script on terminal below to create container and run it.&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd Flask_Celery_example
+$ docker-compose build
+$ docker-compose run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
+&lt;p&gt;The bottleneck in this case is that I could run the Flask, Redis, Celery separately in docker-compose at first, but if I want to run it with only one script then it failed. I had tried and error lots of times to finding the breaking point, the correct script to run Celery in docker-compose. Everything was clear after throughing this bottleneck.
+Thanks for reading my first article! Leave your message below my Facebook post if there’s still any further questions. See you then.&lt;/p&gt;</content><author><name>Samuel Tseng</name></author><category term="tech" /><summary type="html">Setting both Celery and Flask inside the docker-compose</summary></entry></feed>
