@@ -50,6 +50,13 @@ show_author_education_details: true
 show_author_project_details: true
 
 author_work_experiences: 
+            - company_name: Homeday GmbH
+              company_logo: homeday.jpeg
+              company_url: https://www.homeday.de/de/
+              designation: Data Engineer
+                (Mar 2021 - PRESENT)
+              description: The owner of data warehouse, data pipeline in Business Intelligence Team, took responsibility on maintaining Germany real estate pricing model.
+              visibility: true
             - company_name: Google Cloud
               company_logo: gcpde.png
               company_url: https://www.credential.net/0a58fb8b-3008-44e0-8983-cc14761fc15b
