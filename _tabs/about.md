@@ -5,8 +5,8 @@ order: 4
 ---
 
 
-Samuel is a data engineer and cloud solutions practitioner currently based in Berlin, DE.
-He occasionally blogs about DataOps, continuous integration and Cloud architecture design on AWS and GCP.
+Samuel is an experienced Data Engineer with a strong focus on data migration, cloud-native solutions, and data processing pipelines. 
+Experienced in designing scalable systems, optimizing performance, and implementing robust data integration strategies across cross-functional teams.
 
 
 - [LinkedIn](https://www.linkedin.com/in/samuel-tseng/)
