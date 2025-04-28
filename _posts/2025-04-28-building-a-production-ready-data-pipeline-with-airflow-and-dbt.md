@@ -275,9 +275,10 @@ First, a staging model to standardize raw data formats:
 
 ```sql
 -- stg_sales.sql
+{% raw %}
 with source as (
     select * from {{ source('postgres', 'sales') }}
-),
+),{% endraw %}
 
 cleaned as (
     select
@@ -345,6 +346,7 @@ Then dimensional models built on top of staging:
 
 ```sql
 -- fact_sales.sql
+{% raw %}
 {{
   config(
     unique_key = 'sale_id',
@@ -409,6 +411,7 @@ final as (
 )
 
 select * from final
+{% endraw %}
 ```
 
 ### 4. Orchestration with Airflow
@@ -608,9 +611,11 @@ ORDER BY "SaleID" ASC
 2. dbt models use incremental materialization:
 
 ```sql
+{% raw %}
 {% if is_incremental() %}
 where s.transformed_at > (select max(transformed_at) from {{ this }})
 {% endif %}
+{% endraw %}
 ```
 
 This two-tiered approach ensures efficient processing of only new or changed data.
