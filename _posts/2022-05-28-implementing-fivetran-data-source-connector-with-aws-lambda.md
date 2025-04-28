@@ -4,7 +4,7 @@ title: Implementing Fivetran Data Source Connector with AWS Lambda
 description: 
 image: 
 category: [Data Engineering Learning Journey]
-tags: AWS Lambda Fivetran ETL
+tags: aws lambda fivetran etl
 date: 2022-05-28 22:47 +0200
 ---
 ## Basic background of AWS Lambda
