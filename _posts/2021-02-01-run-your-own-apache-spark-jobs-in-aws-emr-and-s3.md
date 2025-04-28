@@ -4,7 +4,7 @@ title: Run your own Apache Spark jobs in AWS EMR and S3
 description: 
 image: 
 category: [Data Engineering Learning Journey]
-tags: AWS data lake pipeline
+tags: aws datalake pipeline
 date: 2021-02-01 00:00 +0000
 ---
 ## Run your own Apache Spark jobs in AWS EMR and S3
