@@ -3,7 +3,7 @@ layout: post
 title: 'Building a Scalable ETL Pipeline for AdTech Analytics'
 description: 
 image: 
-category: [Data Engineering Learning Journey]
+category: [Data Engineering]
 tags: python postgres etl clickhouse 
 date: 2025-04-21 17:47 +0200
 ---
