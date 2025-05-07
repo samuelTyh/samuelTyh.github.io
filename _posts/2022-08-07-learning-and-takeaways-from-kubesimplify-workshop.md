@@ -3,8 +3,7 @@ layout: post
 title: Learning and Takeaways from Kubesimplify Workshop
 description: https://kubesimplify.github.io/live-workshops/
 image: 
-category:
-- Data Engineering Learning Journey
+category: [Learning Journey]
 tags: devops linux docker k8s
 date: 2022-08-07 00:03 +0200
 ---

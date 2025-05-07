@@ -4,7 +4,7 @@ title: How to train a customized Name Entities Recognition (NER) model based on 
   pre-trained model
 description: 
 image: 
-category: [Data Engineering Learning Journey]
+category: [Learning Journey]
 tags: ner spacy nlp
 date: 2020-03-04 00:00 +0000
 ---

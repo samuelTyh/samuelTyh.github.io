@@ -3,7 +3,7 @@ layout: post
 title: Setting both Celery and Flask inside the docker-compose
 description: 
 image: 
-category: [Data Engineering Learning Journey]
+category: [Learning Journey]
 tags: celery flask docker
 date: 2020-02-04 00:00 +0000
 ---

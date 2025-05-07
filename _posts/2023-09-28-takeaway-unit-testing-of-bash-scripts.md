@@ -3,7 +3,7 @@ layout: post
 title: 'Takeaway: Unit Testing of Bash Scripts'
 description: 
 image: 
-category: [Data Engineering Learning Journey]
+category: [Learning Journey]
 tags: bash unittest
 date: 2023-09-28 13:40 +0200
 ---

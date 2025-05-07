@@ -3,7 +3,7 @@ layout: post
 title: Connect PostgreSQL in docker container with Azure Data Studio
 description: 
 image: 
-category: [Data Engineering Learning Journey]
+category: [Learning Journey]
 tags: azure-data-studio
 date: 2020-02-05 00:00 +0000
 ---
