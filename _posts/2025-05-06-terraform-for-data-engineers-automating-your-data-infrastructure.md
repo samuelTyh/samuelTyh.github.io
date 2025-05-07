@@ -3,7 +3,7 @@ layout: post
 title: 'Terraform for Data Engineers: Automating Your Data Infrastructure'
 description: A comprehensive walkthrough of Terraform for Data Engineers.
 image: 
-category: [Data Engineering]
+category: [Learning Journey]
 tags: terraform devops hashicorp iac
 date: 2025-05-06 21:34 +0200
 ---
