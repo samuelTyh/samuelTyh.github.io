@@ -36,7 +36,7 @@ def ping():
     return jsonify(res)
 ```
 
-## Using [cronjob.org](http://cronjob.org) to keep your app alive
+## Using [cron-job.org](https://cron-job.org/en/) to keep your app alive
 
 - Signup on [https://cron-job.org/en/](https://cron-job.org/en/)
 - Verify your email once the signup is done.

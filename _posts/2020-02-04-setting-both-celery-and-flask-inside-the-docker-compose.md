@@ -19,8 +19,7 @@ So let's started!
 1. [Asynchronous Tasks with Flask and Redis Queue](https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/)
 2. [The web-service for extracting dominant color from images.](https://github.com/ViktorSalimonov/pylette?source=post_page---------------------------)
 3. [Using Celery with Flask](https://blog.miguelgrinberg.com/post/using-celery-with-flask)
-4. [Flask + Celery tutorial (Mandarin resource)](http://andyjin.applinzi.com/?p=1230)
-5. [Task schduling with Celery (Mandarin resource)](https://forster.site/2016-11-17-celery.html)
+4. [Task schduling with Celery (Mandarin resource)](https://forster.site/2016-11-17-celery.html)
 
 ---
 #### App Structure Displaying
