@@ -1,0 +1,143 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>samueltyh</title>
+  <subtitle>Samuel's personal writing place, sharing data engineering, life and work reflections.</subtitle>
+  <updated>2025-12-12T14:53:04+01:00</updated>
+  <author>
+    <name>Samuel Tseng</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 Samuel Tseng </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Year end reflection: landing a new job in 2025</title>
+    <link href="http://localhost:4000/posts/year-end-reflection-landing-a-new-job-in-2025/" rel="alternate" type="text/html" title="Year end reflection: landing a new job in 2025" />
+    <published>2025-12-12T14:25:00+01:00</published>
+  
+    <updated>2025-12-12T14:25:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/year-end-reflection-landing-a-new-job-in-2025/</id>
+    <content type="text/html" src="http://localhost:4000/posts/year-end-reflection-landing-a-new-job-in-2025/" />
+    <author>
+      <name>Samuel Tseng</name>
+    </author>
+
+  
+    
+    <category term="Career" />
+    
+  
+
+  <summary>簡而言之，時間來到 2025 年的最後一個月，我這一整年漫長的找工作之路終於暫時找到一個棲身之所。 對我來說，一份工作除了要能帶來成就感，也得是一個能讓我練功打怪、獲得報酬的地方。  前幾天我簡單統計了一下今年的求職轉換率，才驚覺數字其實不差，但我的體感卻沒有比過去幾年輕鬆多少。                 Apply       FirstContact       HiringManager       TechnicalRound       Onsite(Final)       Offer                       ~81       25       16       13       3       2           其中 Apply 包含主動投遞與 Recruiter 聯繫。我最意外的是，今年居然不到 100 個 applications。...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Free n8n Hosting: Leveraging Hugging Face Spaces and Supabase for Persistent Workflow Automation</title>
+    <link href="http://localhost:4000/posts/free-n8n-hosting-leveraging-hugging-face-spaces-and-supabase-for-persistent-workflow-automation/" rel="alternate" type="text/html" title="Free n8n Hosting: Leveraging Hugging Face Spaces and Supabase for Persistent Workflow Automation" />
+    <published>2025-06-02T20:52:00+02:00</published>
+  
+    <updated>2025-06-02T20:52:00+02:00</updated>
+  
+    <id>http://localhost:4000/posts/free-n8n-hosting-leveraging-hugging-face-spaces-and-supabase-for-persistent-workflow-automation/</id>
+    <content type="text/html" src="http://localhost:4000/posts/free-n8n-hosting-leveraging-hugging-face-spaces-and-supabase-for-persistent-workflow-automation/" />
+    <author>
+      <name>Samuel Tseng</name>
+    </author>
+
+  
+    
+    <category term="Learning Journey" />
+    
+  
+
+  <summary>n8n Cloud deployment method that beginners can use for free</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Terraform for Data Engineers: Automating Your Data Infrastructure</title>
+    <link href="http://localhost:4000/posts/terraform-for-data-engineers-automating-your-data-infrastructure/" rel="alternate" type="text/html" title="Terraform for Data Engineers: Automating Your Data Infrastructure" />
+    <published>2025-05-06T21:34:00+02:00</published>
+  
+    <updated>2025-05-06T21:34:00+02:00</updated>
+  
+    <id>http://localhost:4000/posts/terraform-for-data-engineers-automating-your-data-infrastructure/</id>
+    <content type="text/html" src="http://localhost:4000/posts/terraform-for-data-engineers-automating-your-data-infrastructure/" />
+    <author>
+      <name>Samuel Tseng</name>
+    </author>
+
+  
+    
+    <category term="Learning Journey" />
+    
+  
+
+  <summary>A comprehensive walkthrough of Terraform for Data Engineers.</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Building a Production-Ready Data Pipeline with Airflow and dbt</title>
+    <link href="http://localhost:4000/posts/building-a-production-ready-data-pipeline-with-airflow-and-dbt/" rel="alternate" type="text/html" title="Building a Production-Ready Data Pipeline with Airflow and dbt" />
+    <published>2025-04-28T14:30:00+02:00</published>
+  
+    <updated>2025-04-28T14:30:00+02:00</updated>
+  
+    <id>http://localhost:4000/posts/building-a-production-ready-data-pipeline-with-airflow-and-dbt/</id>
+    <content type="text/html" src="http://localhost:4000/posts/building-a-production-ready-data-pipeline-with-airflow-and-dbt/" />
+    <author>
+      <name>Samuel Tseng</name>
+    </author>
+
+  
+    
+    <category term="Data Engineering" />
+    
+  
+
+  <summary>A comprehensive walkthrough of implementing a modern sales data engineering pipeline with Airflow, dbt, and PostgreSQL, focusing on practical insights and real-world patterns.</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Building a Scalable ETL Pipeline for AdTech Analytics</title>
+    <link href="http://localhost:4000/posts/building-a-scalable-etl-pipeline-for-adtech-analytics/" rel="alternate" type="text/html" title="Building a Scalable ETL Pipeline for AdTech Analytics" />
+    <published>2025-04-21T17:47:00+02:00</published>
+  
+    <updated>2025-04-21T17:47:00+02:00</updated>
+  
+    <id>http://localhost:4000/posts/building-a-scalable-etl-pipeline-for-adtech-analytics/</id>
+    <content type="text/html" src="http://localhost:4000/posts/building-a-scalable-etl-pipeline-for-adtech-analytics/" />
+    <author>
+      <name>Samuel Tseng</name>
+    </author>
+
+  
+    
+    <category term="Data Engineering" />
+    
+  
+
+  <summary>In the world of digital advertising, data is everything. Transforming raw operational data into actionable insights requires robust analytics pipelines. Recently, I implemented a comprehensive ETL (Extract, Transform, Load) solution for an advertising platform that moves data from PostgreSQL to ClickHouse for high-performance analytics. Let me walk you through the process, design decisions, and...</summary>
+
+  </entry>
+
+</feed>
+
+
