@@ -14,7 +14,7 @@ date: 2026-03-23 23:41 +0100
 
 If you've spent time managing a Snowflake account at scale, you've felt the pain. A new engineer/analyst joins, we have to ask someone manually creates a user, assigns a role, and grants warehouse access. Three months later, nobody remembers what was granted or why (I admitted it was me). Multiply that by 100+ users and a dozen warehouses, and you've got configuration drift with no audit trail.
 
-That's exactly the problem I ran into rebuilding Enpal Energy's data infrastructure. The fix? **SnowDDL** — a declarative, YAML-based object management tool that brings real infrastructure-as-code to Snowflake.
+That's exactly the problem I ran into rebuilding Enpal Energy's data infrastructure. The fix? **SnowDDL**, a declarative, YAML-based object management tool that brings real infrastructure-as-code to Snowflake.
 
 This post walks you through getting started with it. Let's have it a try!
 
