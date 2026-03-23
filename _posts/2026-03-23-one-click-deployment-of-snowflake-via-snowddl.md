@@ -2,7 +2,7 @@
 layout: post
 title: One-click deployment of Snowflake via SnowDDL
 description: Time to stop clicking/switching tabs around in Snowflake. Struggling
-  about setting up RBAC, database and table layer? Deploy your desiable objects as
+  about setting up RBAC, database and table layer? Deploy your desirable objects as
   YAML as easier
 image:
 category:
@@ -22,7 +22,7 @@ This post walks you through getting started with it. Let's have it a try!
 
 ## Why Not Terraform?
 
-Terraform works, and indeed it was utilized in Enpal's master Snowflake data platform, but it's too heavy to maintain by smaller team, especially for Snowflake-specific workflows. The provider has coverage gaps, keeping state in sync is finicky, and making it truly DRY takes a lot of module wrangling. And, the learning curve is not friendly to colleagues with Data Scientist background. In contrary, SnowDDL is purpose-built for Snowflake, no state files, no provider quirks, just YAML configs that describe what your account should look like and it's already familiar to most of my team members. Looks like to perfect match!
+Terraform works, and indeed it was utilized in Enpal's master Snowflake data platform, but it's too heavy to maintain by smaller team, especially for Snowflake-specific workflows. The provider has coverage gaps, keeping state in sync is finicky, and making it truly DRY takes a lot of module wrangling. And, the learning curve is not friendly to colleagues with Data Scientist background. In contrary, SnowDDL is purpose-built for Snowflake, no state files, no provider quirks, just YAML configs that describe what your account should look like and it's already familiar to most of my team members. Looks like a perfect match!
 
 ---
 
